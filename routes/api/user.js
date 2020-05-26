@@ -5,7 +5,7 @@ const forkingController = require("../../controllers/forkingController");
 // router.route("/").get(forkingController.findAll).post(forkingController.create);
 
 // Matches with "/api/user/:id
-router.route("/user/:id")
+router.route("/:id")
     .get(forkingController.findById)
     .put(forkingController.update)
     .delete(forkingController.remove);
@@ -14,10 +14,11 @@ router.route("/user/:id")
     // .put(forkingController.updateRecipe)
     // .delete(forkingController.removeRecipe)
 
-router.route("/user")
-    .post(forkingController.create);
+//post to "/api/user/
+router.route("/")
+    .post(forkingController.create)
+    .get(forkingController.findAllRecipes)
 
-    // .get(forkingController.findAllRecipes)
     // .post(forkingController.createRecipe)
 
 module.exports = router;

@@ -1,5 +1,4 @@
-
-  const db = require("../models");
+const db = require("../models");
 
   // Defining methods for the forkingController ** Creating/Managing/Deleting User Profiles
   module.exports = {
@@ -34,9 +33,11 @@
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    
+    //no findAll - no longer correct syntax. Not req.query because we are finding all so just an empty object needed
     findAllRecipes: function(req, res) {
         db.Recipe
-        .findAll(req.query)
+        .find({})
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err))
     },
