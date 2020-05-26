@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const forkingRoutes = require("./forkingAPI");
+const userRoutes = require("./user");
 
 // Book routes
-router.use("/forkingAPI", forkingRoutes);
+router.use("/user", userRoutes);
 
 module.exports = router;

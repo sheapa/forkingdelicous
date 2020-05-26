@@ -2,26 +2,11 @@ const mongoose = require("mongoose");
 const db = require("../models");
 require('dotenv').config();
 
-// This file empties the Books collection and inserts the books below
+// This file empties the user collection and inserts the users below.
 
 mongoose.connect(
   process.env.MONGODB_URI ||"mongodb://localhost/forkingDelicous"
 );
-// ||"mongodb://localhost/forkingDelicous"
-// const dbPath =
-// "mongodb://localhost/forkingDelicous";
-// mongoose.connect(dbPath, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-// const db = mongoose.connection;
-// db.on("error", () => {
-//   console.log("> error occurred from the database");
-// });
-// db.once("open", () => {
-//   console.log("> successfully opened the database");
-// });
-// module.exports = mongoose;
 
 const userSeed = [
   {
