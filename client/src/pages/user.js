@@ -1,12 +1,12 @@
-// import React, { useState, useEffect } from "react";
+import React from "react";
 // import API from "../utils/API";
 
-// // useEffect(() => {
-// //     loadUser();
-// //   }, []);
+function User() {
+    return(
+        <div>
+            <h1>This is user page.</h1>
+        </div>
+    );
+}
 
-// function loadUser() {
-//     API.getUser("5ecc46fc2a09826300712b0c").then((user) => {
-//         console.log
-//     });
-// };
+export default User;

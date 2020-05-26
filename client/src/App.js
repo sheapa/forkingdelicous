@@ -1,19 +1,26 @@
 /* eslint-disable react/prefer-stateless-function */
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import User from "./pages/user";
+import Landing from "./pages/landing";
 
-class App extends Component {
-  render() {
+function App() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Forking Delicious</h2>
+      <Router>
+        <Switch>
+        <div>
+          <Route exact path={["/", "/landing"]}>
+          <Landing />
+          </Route>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div>
+          <Route exact path="/user">
+            <User />
+          </Route>
+        </div>
+        </Switch>
+      </Router>
     );
-  }
 }
 
 export default App;
