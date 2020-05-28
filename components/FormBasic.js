@@ -1,9 +1,13 @@
 import React from "react";
 import { Form, Input, Button, Segment, Grid ,Header} from "semantic-ui-react";
-import "./index.css";
 
+/*   
 
-const Landing = () => (
+    this is as is from the documentation. 
+    you need to add handlers e.g. for submit
+
+*/
+const FormBasic = () => (
   <Grid
     textAlign="center"
     style={{ backgroundColor: "lightblue" ,height : '100vh'}}
@@ -52,4 +56,4 @@ const Landing = () => (
   </Grid>
 );
 
-export default Landing;
+export default FormBasic;
