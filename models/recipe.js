@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const RecipeSchema = new Schema({
   title: Schema.Types.String,
   description: Schema.Types.String,
-  instruction: Schema.Types.String,
+  instruction: [Schema.Types.String],
   ingredients: [
     {
       name: Schema.Types.String,
