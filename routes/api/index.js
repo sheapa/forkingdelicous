@@ -1,7 +1,9 @@
-const router = require("express").Router();
-const userRoutes = require("./user");
+// *** May be used later. I had to disable the MVC to simplify the code for creating sessions and implementing authentication. 
 
-// user routes
-router.use("/user", userRoutes);
+// const router = require("express").Router();
+// const userRoutes = require("./user");
 
-module.exports = router;
+// // user routes
+// router.use("/user", userRoutes);
+
+// module.exports = router;

@@ -1,34 +1,54 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-require('dotenv').config();
+// require('dotenv').config();
 
 // This file empties the user collection and inserts the users below.
 
+// Had to pass through encryption on way in. Would not work otherwise.
+
+// Connects to databse for inserting seed object.
 mongoose.connect(
   process.env.MONGODB_URI ||"mongodb://localhost/forkingDelicous"
-);
+  , {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+  });
 
-const userSeed = [
+  const mongoose_db = mongoose.connection;
+
+  mongoose_db.on("error", function(err) {
+    console.log(err);
+  })
+
+  
+mongoose_db.once("open",function() {
+  db.User.create([
   {
-    name: "gordonRamsey",
+    firstName: "gordon",
+    lastName: "ramsey",
     email: "gr@sample.com",
-    recipies: "[beef wellington, spotted dick, crumpets]"
+    username: "gram",
+    password: "lol",
+    recipies: [["beef wellington, spotted dick, crumpets"]], // not working
+    avatar:"null"
   },
   {
-    name: "guy feirrie",
-    email: "gf@demo.com",
-    recipies: "null"
+    firstName: "guy",
+    lastName: "fieri",
+    email: "dumb@fat.com",
+    username: "frostop",
+    password: "pass",
+    recipies: "[[null]]", // not working
+    avatar:"null"
   }
-];
-
-db.User
-  .remove({})
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
+  ], function(err, user) { //(docs)
+    if (err) {
+      throw err;
+    } else {
+      console.log(user); //(docs)
+    }
   })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+})
+
+return;
