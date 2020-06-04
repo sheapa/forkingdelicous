@@ -1,26 +1,39 @@
 /* eslint-disable react/prefer-stateless-function */
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import User from "./pages/user";
+import React from "react";   
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Landing from "./pages/landing";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import User from "./pages/user";
 
-function App() {
-    return (
-      <Router>
-        <Switch>
-        <div>
-          <Route exact path={["/", "/landing"]}>
-          <Landing />
-          </Route>
-        </div>
-        <div>
-          <Route exact path="/user">
-            <User />
-          </Route>
-        </div>
-        </Switch>
+
+// const pageToShow = pageName => {
+//   if (pageName === "Landing") return <Landing />;
+//   if (pageName === "Register") return <Register />;
+//   if (pageName === "Login") return <Login />;
+//   if (pageName === "User") return <User />;
+
+// };
+
+export const ConfigContext = React.createContext();
+
+const configValue = {
+  isLoggedIn: false,
+};
+
+const App = ({ userInfo }) => {
+  configValue.loggedInUserusername = userInfo ? userInfo.username : '';
+  return (
+    <Router>
+        <ConfigContext.Provider value={configValue}>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/user" component={User} />
+        </ConfigContext.Provider>
       </Router>
-    );
-}
+  );
+};
+
 
 export default App;
