@@ -15,15 +15,22 @@ index.exists().then(result => {
 
 index
 .saveObjects(recipeJSON, {
-    autoGenerateObjectIDIfNotExist: true,
+    autoGenerateObjectIDIfNotExist: true
 })
 .then(({ objectIDs }) => {
+    console.log(objectIDs);
+});
+
+index.partialUpdateObjects(recipeJSON, {
+    createIfNotExists: true,
+}).then(({ objectIDs }) => {
     console.log(objectIDs);
 });
 
 index
 .setSettings({
     customRanking: ['desc(likes)'],
+    // distinct: 1,
 })
 .then(() => {
     console.log("Custom ranking ran");// done
