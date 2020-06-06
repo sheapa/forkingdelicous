@@ -1,8 +1,10 @@
 const express = require("express");
 const passport = require("../middlewares/passport");
 const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
+const upload = require("../middlewares/multer/multerController")
 const router = express.Router();
 const db = require("../models");
+
 
 // *** TO DO add additional userdata to create & login request.
 
@@ -26,6 +28,21 @@ router.post("/api/create", (req,res) => {
     }
   })
 })
+
+// Upload single avatar file
+// Note that the name of the file field should be the same as the myFile argument passed to the upload.single function.
+
+router.post('/api/uploadfile', upload.Upload.single('myImage'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(file)
+  
+})
+
 
 
 // login route
