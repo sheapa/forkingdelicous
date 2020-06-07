@@ -28,6 +28,12 @@ const Landing =  () => {
   return (
   <div>
   <h1>This is Landing</h1>
+  <div>
+    <form action="/api/uploadFile" enctype="multipart/form-data" method="POST"> 
+        <input type="file" name="myImage" />
+        <input type="submit" value="Upload a file"/>
+    </form>
+  </div>
   {/* <h2>User: {user}</h2> */}
   <Link to={"/login"}>
   <div className="links">Log In</div>
