@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require("../middlewares/passport");
 const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
-const upload = require("../middlewares/multer/multerController")
+const multer = require("../middlewares/multer/multerController");
 const router = express.Router();
 const db = require("../models");
 
@@ -27,12 +27,11 @@ router.post("/api/create", (req,res) => {
       res.redirect(307, "/user");
     }
   })
-})
+});
 
 // Upload single avatar file
 // Note that the name of the file field should be the same as the myFile argument passed to the upload.single function.
-
-router.post('/api/uploadfile', upload.Upload.single('myImage'), (req, res, next) => {
+router.post('/api/uploadfile', multer.avatarUpload.single('myImage'), (req, res, next) => {
   const file = req.file
   if (!file) {
     const error = new Error('Please upload a file')
@@ -41,9 +40,20 @@ router.post('/api/uploadfile', upload.Upload.single('myImage'), (req, res, next)
   }
     res.send(file)
   
-})
+});
 
-
+// Upload multiple recipe images- currently set to max 6 images
+// Note that the name of the file field should be the same as the myFile argument passed to the upload.single function.
+router.post('/api/uploadRecipeImages', multer.recipeUpload.array('recipeImages', 6), (req, res, next) => {
+  const files = req.files
+  if (!files) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(files)
+  
+});
 
 // login route
 router.post("/api/login", (req, res, next) => {
@@ -58,7 +68,7 @@ router.post("/api/login", (req, res, next) => {
       req.session.save(() => res.json({_id: user._id, username: user.username}))
     });
   })(req, res, next);
-})
+});
 
 
   
