@@ -1,51 +1,63 @@
-import React, { Component } from 'react';
-import './index.css';
+import React, { useState } from "react";
+import { Button, Form, Grid, Header, Message, Segment, } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
+const Login = () => {
+    const [username, setusername] = useState("");
+    const [password, setPassword] = useState("");
 
-export default class Login extends Component {
-  render() {
-    return (
-      <form>
-        <h3>Forking Delicious</h3>
-        <h4>Sign In</h4>
 
-        <div className='form-group'>
-          <label>Email address</label>
-          <input
-            type='email'
-            className='form-control'
-            placeholder='Enter email'
-          />
-        </div>
+return (
 
-        <div className='form-group'>
-          <label>Password</label>
-          <input
-            type='password'
-            className='form-control'
-            placeholder='Enter password'
-          />
-        </div>
-
-        <div className='form-group'>
-          <div className='custom-control custom-checkbox'>
-            <input
-              type='checkbox'
-              className='custom-control-input'
-              id='customCheck1'
+    <Grid centered columns={2}>
+      <Grid.Column>
+        <Header as="h2" textAlign="center">
+          Login
+        </Header>
+        <Segment inverted>
+          <Form  action="/api/login" method="POST" size="large">
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="username"
+              name="username"
+              onChange={e => {
+                setusername(e.target.value);
+              }}
+              value={username}
+              type="text"
+              className="form-control"
+              autoComplete="off"
             />
-            <label className='custom-control-label' htmlFor='customCheck1'>
-              Remember me
-            </label>
-          </div>
-        </div>
+            <Form.Input
+              fluid
+              icon="lock"
+              iconPosition="left"
+              onChange={e => {
+                  setPassword(e.target.value);
+                }}
+                value={password}
+                type="password"
+                name="password"
+                placeholder="Password"
+                className="form-control"
+                autoComplete="off"
+            />
 
-        <button type='submit' className='btn btn-primary btn-block'>
-          Submit
-        </button>
-        {/* <p className='forgot-password text-right'>
-          Forgot <a href='#'>password?</a> */}
-        {/* </p> */}
-      </form>
-    );
-  }
-}
+            <Button inverted color='violet' value="submit" fluid size="large">
+              Login
+            </Button>
+          </Form>
+        </Segment>
+        <Message>
+          Not registered yet?
+          <Link to={"/register"}>
+          <div className="links">Sign Up Now</div>
+          </Link>
+        </Message>
+      </Grid.Column>
+    </Grid>
+  );
+  };
+
+  export default Login 
