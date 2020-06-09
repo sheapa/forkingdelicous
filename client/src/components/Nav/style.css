@@ -1,0 +1,12 @@
+.active {
+  color: #36393e !important;
+  background-color: #7d7d74 !important;
+}
+
+.nav-link {
+  color: #7d7d74;
+  background-color: #36393e;
+  margin: 0.25rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
