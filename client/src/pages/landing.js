@@ -1,6 +1,10 @@
-/ import Axios from "axios";
+// import React, {useState, useEffect} from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import Search from '../components/Search/Search'
 // import { Form, Input, Button, Segment, Grid ,Header} from "semantic-ui-react";
-// import "./index.css";
+import "./index.css";
+
 const Landing =  () => {
   return (
   <div>
