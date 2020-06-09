@@ -4,6 +4,7 @@ import React from 'react';
 import algoliasearch from "algoliasearch";
 import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
 import recipeJSON from '../../recipe.json';
+import { Input } from 'semantic-ui-react';
 
 const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //this is my code
 // const searchClient = algoliasearch("latency", "6be0576ff61c053d5f9a3225e2a90f76")
@@ -65,10 +66,13 @@ return (
 
 const Header = () =>(       
 <header className='header'>
+<Input>
 <SearchBox
 className='search-bar'
 translations={{placeholder:"Search for recipe"}}
 />
+</Input>
+
 </header>      
 )
                         

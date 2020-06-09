@@ -16,6 +16,7 @@ import {
   Sidebar,
   Visibility,
 } from 'semantic-ui-react';
+import Search from '../components/Search/Search'
 
 
 // Heads up!
@@ -106,6 +107,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item as='a'>Chef's Corner</Menu.Item>
                 <Menu.Item as='a'>Create a Recipe</Menu.Item>
+                <Search/>
                 <Menu.Item position='right'>
                   <Button as='a' inverted={!fixed}>
                     Log in
