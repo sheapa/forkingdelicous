@@ -18,9 +18,8 @@ class SubmitButton extends Component {
     
     render(){
         return(
-                <Button
-                            // attached='bottom'
-                            // content='Click'
+                <Button type='submit' placeholder='Save'
+                            content='Save'
                             // onClick={this.handleClick}
                             // onKeyPress={this.handleKeyPress}
                           />
