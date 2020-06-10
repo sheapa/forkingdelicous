@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import { Button, Form, Grid, Header, Message, Segment, } from 'semantic-ui-react';
-import { Link } from "react-router-dom";
-import NavigationBar from '../components/Nav/index'
-const Login = () => {
-    const [username, setusername] = useState("");
-    const [password, setPassword] = useState("");
-=======
 import React, { useState, useEffect, useContext } from 'react';
 import {
   Button,
@@ -22,7 +13,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import { Link } from 'react-router-dom';
 import { ConfigContext } from '../App';
->>>>>>> c363848c12f5228878acb20fe8762e1467f5b34d
 
 const Login = ({ signupCallback }) => {
   useEffect(() => {
@@ -33,13 +23,6 @@ const Login = ({ signupCallback }) => {
   // const [emailValid, setEmailValid] = useState(false);
   const [sendProcessing, setSendProcessing] = useState(false);
 
-<<<<<<< HEAD
-    <Grid centered columns={2}>
-      <Grid.Column>
-        <Header as="h2" textAlign="center">
-          <NavigationBar/>
-          Login
-=======
   const context = useContext(ConfigContext);
 
   // function validateEmail(email) {
@@ -91,7 +74,6 @@ const Login = ({ signupCallback }) => {
         />
         <Header as='h2' textAlign='center'>
           Login for Forking Delicious Recipes
->>>>>>> c363848c12f5228878acb20fe8762e1467f5b34d
         </Header>
         <Segment stacked>
           <Form action='/register' method='POST' size='large'>
