@@ -3,6 +3,7 @@ const passport = require("../middlewares/passport");
 const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
 const multer = require("../middlewares/multer/multerController");
 const router = express.Router();
+const apiRoutes = require("./api");
 const db = require("../models");
 
 
@@ -70,6 +71,7 @@ router.post("/api/login", (req, res, next) => {
   })(req, res, next);
 });
 
-
+// API Routes
+router.use("/api", apiRoutes);
   
 module.exports = router;

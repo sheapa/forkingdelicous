@@ -1,10 +1,10 @@
 // *** May be used later. I had to disable the MVC to simplify the code for creating sessions and implementing authentication. 
 
 
-// const db = require("../models");
+const db = require("../models");
 
 //   // Defining methods for the forkingController ** Creating/Managing/Deleting User Profiles
-//   module.exports = {
+  module.exports = {
 //     findByUserName: function(req, res) {
 //       db.User
 //         .findByEmail(req.params.userName)
@@ -36,12 +36,12 @@
 //         .then(dbModel => res.json(dbModel))
 //         .catch(err => res.status(422).json(err));
 //     },
-//     findByRecipeId: function(req, res) {
-//         db.Recipe
-//             .findById(req.params.id)
-//             .then(dbModel => res.json(dbModel))
-//             .catch(err => res.status(422).json(err));
-//     },
+    findByRecipeId: function(req, res) {
+        db.Recipe
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     
 //     //no findAll - no longer correct syntax. Not req.query because we are finding all so just an empty object needed
 //     findAllRecipes: function(req, res) {
@@ -50,12 +50,12 @@
 //         .then(dbModel => res.json(dbModel))
 //         .catch(err => res.status(422).json(err))
 //     },
-//     createRecipe: function(req, res) {
-//         db.Recipe
-//           .create(req.body)
-//           .then(dbModel => res.json(dbModel))
-//           .catch(err => res.status(422).json(err));
-//       },
+    createRecipe: function(req, res) {
+        db.Recipe
+          .create(req.body)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      },
 //       updateRecipe: function(req, res) {
 //         db.Recipe
 //           .findOneAndUpdate({ _id: req.params.id }, req.body)
@@ -69,4 +69,4 @@
 //           .then(dbModel => res.json(dbModel))
 //           .catch(err => res.status(422).json(err));
 //       }
-//   };
+  }
