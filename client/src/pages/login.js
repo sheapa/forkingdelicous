@@ -21,7 +21,7 @@ const Login = ({ signupCallback }) => {
 
   const [username, setusername] = useState();
   // const [emailValid, setEmailValid] = useState(false);
-  const [sendProcessing, setSendProcessing] = useState(false);
+  // const [sendProcessing, setSendProcessing] = useState(false);
 
   const context = useContext(ConfigContext);
 
