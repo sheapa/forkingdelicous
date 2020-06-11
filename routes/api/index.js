@@ -5,8 +5,8 @@ const router = require("express").Router();
 const recipeApiRoutes = require("./recipeApiRoute");
 
 
-// Book routes
-router.use("/recipe", recipeApiRoutes);
+// Recipe routes
+router.use("/api/recipe", recipeApiRoutes);
 
 // User Routes
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import SaveInput from '../components/InputField/InputField'
+import SaveInput from '../components/InputField'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import MyImage from '../../src/assets/images/orcishLibrarian.jpg'
 

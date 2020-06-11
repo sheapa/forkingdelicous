@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import RecipeForm from '../components/Recipe/RecipeForm';
+import RecipeForm from '../components/RecipeForm';
 import API from '../utils/API'
 
 class RecipeCreate extends Component {

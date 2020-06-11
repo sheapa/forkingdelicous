@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Input, Select } from 'semantic-ui-react'
-import SubmitButton from '../SubmitButton/SubmitButton'
+import SubmitButton from '../SubmitButton'
 
 // const SubmitButton = () => (
 //   <Button

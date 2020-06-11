@@ -3,10 +3,15 @@ const passport = require("../middlewares/passport");
 const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
 const multer = require("../middlewares/multer/multerController");
 const router = express.Router();
-const apiRoutes = require("./api");
+// const apiRoutes = require("./api");
 const db = require("../models");
+const recipeController = require("../controllers/forkingController");
 
+// router.route("/recipeCreate") this may not be the correct path???
+router.route("/api/recipeCreate")
+.post(recipeController.createRecipe)
 
+module.exports = router
 // *** TO DO add additional userdata to create & login request.
 
 // New User
@@ -72,6 +77,6 @@ router.post("/api/login", (req, res, next) => {
 });
 
 // API Routes
-router.use("/api", apiRoutes);
+// router.use("/api", apiRoutes);
   
 module.exports = router;

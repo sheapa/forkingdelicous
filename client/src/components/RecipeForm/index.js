@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import InputField from '../InputField/InputField'
-import SubmitButton from '../SubmitButton/SubmitButton'
-import { Form, Radio, TextArea,} from 'semantic-ui-react'
+// import InputField from '../InputField'
+import SubmitButton from '../SubmitButton'
+// import { Form, Radio, TextArea,} from 'semantic-ui-react'
+import { Form, Radio, Input } from 'semantic-ui-react'
 
 
 
@@ -13,14 +14,14 @@ class RecipeForm extends Component {
                 
     const { value } = this.state
     return (
-      <Form>
+      <Form action='/api/recipeCreate' method='POST' >
           <Form.Field
-            control={InputField}
+            control={Input}
             label='Title'
             placeholder='Title'
             width={12}
           />
-           <Form.Field
+           {/* <Form.Field
           control={TextArea}
           label='Description'
           placeholder='Dish it out...'
@@ -121,7 +122,7 @@ class RecipeForm extends Component {
             label='Author'
             placeholder='Author'
             width={12}
-          />
+          /> */}
         <Form.Group inline>
           <label>Yeild</label>
           <Form.Field
