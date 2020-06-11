@@ -8,10 +8,10 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { ConfigContext } from '../App';
 
 const Login = ({ signupCallback }) => {
@@ -30,26 +30,26 @@ const Login = ({ signupCallback }) => {
   //   return re.test(email);
   // }
 
-  const notify = () => {
-    toast.info(`You will be notified of upcoming events ${username}`);
-  };
+  // const notify = () => {
+  //   toast.info(`You will be notified of upcoming events ${username}`);
+  // };
 
-  function sendusernameToBackend() {
-    setSendProcessing(true);
-    new Promise(function (resolve) {
-      setTimeout(function () {
-        setSendProcessing(false);
-        setusername('');
-        resolve();
-      }, 1000);
-    }).then(() => {
-      notify();
-      signupCallback(username);
-      setusername('');
-    });
-  }
+  // function sendusernameToBackend() {
+  //   setSendProcessing(true);
+  //   new Promise(function (resolve) {
+  //     setTimeout(function () {
+  //       setSendProcessing(false);
+  //       setusername('');
+  //       resolve();
+  //     }, 1000);
+  //   }).then(() => {
+  //     notify();
+  //     signupCallback(username);
+  //     setusername('');
+  //   });
+  // }
 
-  const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
+  // const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
 
   //console.log("src/LogMeIn called");
 
