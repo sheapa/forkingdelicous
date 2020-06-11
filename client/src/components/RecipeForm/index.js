@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import InputField from '../InputField'
 import SubmitButton from '../SubmitButton'
 // import { Form, Radio, TextArea,} from 'semantic-ui-react'
-import { Form } from 'semantic-ui-react'
+import { Form, Input, TextArea } from 'semantic-ui-react'
 
 
 
@@ -15,30 +15,35 @@ class RecipeForm extends Component {
 
     return (
       <Form action='/api/recipeCreate' method='POST' >
-          <Form.Field
-          width={12}>
-      <label>Ingredient</label>
-      <input placeholder='Ingredient' />
-    </Form.Field>
-           {/* <Form.Field
+        <Form.Input 
+          label='Title'
+          placeholder='Title' 
+          name="title"
+          type='text' 
+          width={12}
+        />
+        <Form.Field
           control={TextArea}
           label='Description'
+          name="description"
           placeholder='Dish it out...'
           width={12}
         />
          <Form.Field
           control={TextArea}
           label='Instructions'
+          name="instruction"
           placeholder='Tell us what to do....'
           width={12}
         />
-          <Form.Field
-            control={InputField}
+          {/* <Form.Field
+            control={Input}
             label='Ingredient'
+            name="ingredients"
             placeholder='Ingredient'
             width={12}
-          />
-        <Form.Field
+          /> */}
+        {/* <Form.Field
             control={InputField}
             label='Ingredient'
             placeholder='Ingredient'
@@ -97,14 +102,15 @@ class RecipeForm extends Component {
             label='Date Published'
             placeholder='Date Published'
             width={12}
-          />
+          /> */}
           <Form.Field
-            control={InputField}
+            control={Input}
             label='Likes'
+            name="likes"
             placeholder='Likes'
             width={12}
           />
-          <Form.Field
+          {/* <Form.Field
             control={InputField}
             label='Saves'
             placeholder='Saves'
@@ -121,7 +127,7 @@ class RecipeForm extends Component {
             label='Author'
             placeholder='Author'
             width={12}
-          /> */}
+          /> */} 
         {/* <Form.Group inline>
           <label>Yeild</label>
           <Form.Field
