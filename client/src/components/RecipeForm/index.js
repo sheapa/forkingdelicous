@@ -2,44 +2,48 @@ import React, { Component } from 'react'
 // import InputField from '../InputField'
 import SubmitButton from '../SubmitButton'
 // import { Form, Radio, TextArea,} from 'semantic-ui-react'
-import { Form, Radio, Input } from 'semantic-ui-react'
+import { Form, Input, TextArea } from 'semantic-ui-react'
 
 
 
 
 class RecipeForm extends Component {
-    state = {}
     
     render() {
                 
-    const { value } = this.state
+    // const { value } = this.state
+
     return (
       <Form action='/api/recipeCreate' method='POST' >
-          <Form.Field
-            control={Input}
-            label='Title'
-            placeholder='Title'
-            width={12}
-          />
-           {/* <Form.Field
+        <Form.Input 
+          label='Title'
+          placeholder='Title' 
+          name="title"
+          type='text' 
+          width={12}
+        />
+        <Form.Field
           control={TextArea}
           label='Description'
+          name="description"
           placeholder='Dish it out...'
           width={12}
         />
          <Form.Field
           control={TextArea}
           label='Instructions'
+          name="instruction"
           placeholder='Tell us what to do....'
           width={12}
         />
-          <Form.Field
-            control={InputField}
+          {/* <Form.Field
+            control={Input}
             label='Ingredient'
+            name="ingredients"
             placeholder='Ingredient'
             width={12}
-          />
-        <Form.Field
+          /> */}
+        {/* <Form.Field
             control={InputField}
             label='Ingredient'
             placeholder='Ingredient'
@@ -98,14 +102,15 @@ class RecipeForm extends Component {
             label='Date Published'
             placeholder='Date Published'
             width={12}
-          />
+          /> */}
           <Form.Field
-            control={InputField}
+            control={Input}
             label='Likes'
+            name="likes"
             placeholder='Likes'
             width={12}
           />
-          <Form.Field
+          {/* <Form.Field
             control={InputField}
             label='Saves'
             placeholder='Saves'
@@ -122,8 +127,8 @@ class RecipeForm extends Component {
             label='Author'
             placeholder='Author'
             width={12}
-          /> */}
-        <Form.Group inline>
+          /> */} 
+        {/* <Form.Group inline>
           <label>Yeild</label>
           <Form.Field
             control={Radio}
@@ -153,7 +158,7 @@ class RecipeForm extends Component {
             checked={value === '4'}
             onChange={this.handleChange}
           />
-        </Form.Group>
+        </Form.Group> */}
         <Form.Field control={SubmitButton}>Submit</Form.Field>
       </Form>
     )
