@@ -26,9 +26,9 @@ const mongoose_db = mongoose.connection;
 
 
 // *** Serve up static assets (usually on heroku) *** May be required for Heroku deployment
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // Currently serving static assets
 app.use(express.static(path.join(__dirname, "public")));
