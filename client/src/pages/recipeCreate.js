@@ -29,10 +29,10 @@ handleFormSubmit = event => {
     this.getRecipes();
   };
 
-handleBookSave = id => {
+handleRecipeCreate = id => {
     const recipe = this.state.recipe.find(recipe => recipe.id === id);
 
-    API.saveBook({
+    API.saveRecipe({
         id: recipe.id,
         title: recipe.title,
         description: recipe.description,
@@ -61,10 +61,9 @@ handleBookSave = id => {
 render (){
 return (
 <RecipeForm
-//  handleInputChange={this.handleInputChange}
+ handleRecipeCreate={this.handleRecipeCreate}
  handleFormSubmit={this.handleFormSubmit}
  q={this.state.q}
-
 />
 )
 }
