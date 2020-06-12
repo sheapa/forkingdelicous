@@ -1,51 +1,120 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Image,
+  Message,
+  Segment,
+} from 'semantic-ui-react';
+// import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
+// import { Link } from 'react-router-dom';
+import { ConfigContext } from '../App';
 
-export default class Login extends Component {
-  render() {
+const Login = ({ signupCallback }) => {
+  useEffect(() => {
+    //console.log(`SignMeUp:useEffect called`);
+  });
+
+  const [username, setusername] = useState();
+  // const [emailValid, setEmailValid] = useState(false);
+  // const [sendProcessing, setSendProcessing] = useState(false);
+
+  const context = useContext(ConfigContext);
+
+  // function validateEmail(email) {
+  //   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //   return re.test(email);
+  // }
+
+  // const notify = () => {
+  //   toast.info(`You will be notified of upcoming events ${username}`);
+  // };
+
+  // function sendusernameToBackend() {
+  //   setSendProcessing(true);
+  //   new Promise(function (resolve) {
+  //     setTimeout(function () {
+  //       setSendProcessing(false);
+  //       setusername('');
+  //       resolve();
+  //     }, 1000);
+  //   }).then(() => {
+  //     notify();
+  //     signupCallback(username);
+  //     setusername('');
+  //   });
+  // }
+
+  // const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
+
+  //console.log("src/LogMeIn called");
+
+  if (context.loggedInUserusername) {
     return (
-      <form>
-        <h3>Forking Delicious</h3>
-        <h4>Sign In</h4>
-
-        <div className='form-group'>
-          <label>Email address</label>
-          <input
-            type='email'
-            className='form-control'
-            placeholder='Enter email'
-          />
+      <div className='container'>
+        <div className='content'>
+          <span>Logged in User username: {context.loggedInUserusername}</span>
+          &nbsp;&nbsp;
+          <a href='/logout'>Logout</a>
         </div>
-
-        <div className='form-group'>
-          <label>Password</label>
-          <input
-            type='password'
-            className='form-control'
-            placeholder='Enter password'
-          />
-        </div>
-
-        <div className='form-group'>
-          <div className='custom-control custom-checkbox'>
-            <input
-              type='checkbox'
-              className='custom-control-input'
-              id='customCheck1'
-            />
-            <label className='custom-control-label' htmlFor='customCheck1'>
-              Remember me
-            </label>
-          </div>
-        </div>
-
-        <button type='submit' className='btn btn-primary btn-block'>
-          Submit
-        </button>
-        <p className='forgot-password text-right'>
-          Forgot <a href='#'>password?</a>
-        </p>
-      </form>
+      </div>
     );
   }
-}
+
+  return context.showSignMeUp === false ? null : (
+    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 600 }}>
+        <Image
+          src='https://live.staticflickr.com/65535/49986191503_43be3abc1e.jpg'
+          size='large'
+        />
+        <Header as='h2' textAlign='center'>
+          Login for Forking Delicious Recipes
+        </Header>
+        <Segment stacked>
+          <Form action='/register' method='POST' size='large'>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='username'
+              name='username'
+              onChange={(e) => {
+                setusername(e.target.value);
+              }}
+              value={username}
+              autoComplete='off'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              onChange={(e) => {
+                console.log('space for password');
+                // setPassword(e.target.value);
+              }}
+              //   value={password}
+              type='password'
+              name='password'
+              placeholder='Password'
+              autoComplete='off'
+            />
+
+            <Button color='#36393e' value='submit' fluid size='large'>
+              Log Me In
+            </Button>
+          </Form>
+
+          <Message>
+            New to us? <a href='#'>Sign Up</a>
+          </Message>
+        </Segment>
+      </Grid.Column>
+    </Grid>
+  );
+};
+export default Login;
