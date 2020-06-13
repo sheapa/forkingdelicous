@@ -8,7 +8,6 @@ import {
   Header,
   Icon,
   Image,
-  List,
   Menu,
   Responsive,
   Segment,
@@ -16,6 +15,7 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import './index.css';
+// import SearchBar from '../components/Search'
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -62,6 +62,7 @@ const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
       Pick a Recipe
       <Icon name='right arrow' style={{ color: '#5b5391' }} />
     </Button>
+    {/* <SearchBar/> */}
   </Container>
 );
 

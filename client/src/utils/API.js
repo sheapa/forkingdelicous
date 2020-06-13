@@ -1,5 +1,19 @@
 import axios from "axios";
 
+export default {
+findByRecipeId: function(id){
+    return axios.get("/api/recipe" + id)
+},
+
+saveRecipe: function(recipeData){
+    return axios.post("/api/recipe", recipeData)
+},
+
+saveIngredient: function(ingredientData){
+    return axios.post("/api/ingredients", ingredientData)
+}
+};
+
 // export default {
 //   // Gets the user with the given id
 //   getUser: function(id) {
