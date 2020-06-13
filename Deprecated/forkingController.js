@@ -36,12 +36,12 @@ const db = require("../models");
 //         .then(dbModel => res.json(dbModel))
 //         .catch(err => res.status(422).json(err));
 //     },
-    findByRecipeId: function(req, res) {
-        db.Recipe
-            .findById(req.params.id)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
+    // findByRecipeId: function(req, res) {
+    //     db.Recipe
+    //         .findById(req.params.id)
+    //         .then(dbModel => res.json(dbModel))
+    //         .catch(err => res.status(422).json(err));
+    // },
     
 //     //no findAll - no longer correct syntax. Not req.query because we are finding all so just an empty object needed
 //     findAllRecipes: function(req, res) {
@@ -50,12 +50,12 @@ const db = require("../models");
 //         .then(dbModel => res.json(dbModel))
 //         .catch(err => res.status(422).json(err))
 //     },
-    createRecipe: function(req, res) {
-        db.Recipe
-          .create(req.body)
-          .then(dbModel => res.json(dbModel))
-          .catch(err => res.status(422).json(err));
-      },
+    // createRecipe: function(req, res) {
+    //     db.Recipe
+    //       .create(req.body)
+    //       .then(dbModel => res.json(dbModel))
+    //       .catch(err => res.status(422).json(err));
+    //   },
 //       updateRecipe: function(req, res) {
 //         db.Recipe
 //           .findOneAndUpdate({ _id: req.params.id }, req.body)
