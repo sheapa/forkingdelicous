@@ -5,7 +5,6 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "algoliasearch": "^4.2.0",
-    "mongoolia": "^1.0.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-instantsearch-dom": "^6.5.0",
