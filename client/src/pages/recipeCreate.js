@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import RecipeForm from '../components/RecipeForm';
 import API from '../utils/API'
+import algoliasearch from "algoliasearch";
+
+const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582")
+
+const index = searchClient.initIndex('recipeDB');
+
 
 class RecipeCreate extends Component {
 state = {
@@ -64,8 +70,28 @@ console.log(recipe)
     );
   };
 
-render (){
+render (saveRecipe){
 return (
+
+  index.exists().then(result => {
+    console.log(result);
+  }),
+  
+  index
+  .saveObjects(saveRecipe, {
+      autoGenerateObjectIDIfNotExist: true
+  })
+  .then(({ objectIDs }) => {
+      console.log(objectIDs);
+  }),
+  
+  index.partialUpdateObjects(saveRecipe, {
+      createIfNotExists: true,
+  }).then(({ objectIDs }) => {
+      console.log(objectIDs);
+  }),
+  
+
 <RecipeForm
  handleRecipeCreate={this.handleRecipeCreate}
  handleFormSubmit={this.handleFormSubmit}

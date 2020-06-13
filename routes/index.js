@@ -1,6 +1,6 @@
 const express = require("express");
 const passport = require("../middlewares/passport");
-const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
+// const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
 const multer = require("../middlewares/multer/multerController");
 const router = express.Router();
 // const apiRoutes = require("./api");
