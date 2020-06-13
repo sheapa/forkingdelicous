@@ -71,11 +71,12 @@ const Login = ({ signupCallback }) => {
         <Image
           src='https://live.staticflickr.com/65535/49986191503_43be3abc1e.jpg'
           size='large'
+          centered
         />
         <Header as='h2' textAlign='center'>
           Login for Forking Delicious Recipes
         </Header>
-        <Segment stacked>
+        <Segment stacked style={{ background: '#726f79' }}>
           <Form action='/register' method='POST' size='large'>
             <Form.Input
               fluid
@@ -104,12 +105,17 @@ const Login = ({ signupCallback }) => {
               autoComplete='off'
             />
 
-            <Button color='#36393e' value='submit' fluid size='large'>
+            <Button
+              style={{ background: '#7d7d74', color: '#f6f7f5' }}
+              value='submit'
+              fluid
+              size='large'
+            >
               Log Me In
             </Button>
           </Form>
 
-          <Message>
+          <Message size='small'>
             New to us? <a href='#'>Sign Up</a>
           </Message>
         </Segment>

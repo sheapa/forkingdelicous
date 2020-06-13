@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import {
@@ -16,7 +15,7 @@ import {
   Sidebar,
   Visibility,
 } from 'semantic-ui-react';
-
+import './index.css';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -24,16 +23,15 @@ import {
 const getWidth = () => {
   const isSSR = typeof window === 'undefined';
 
-
   return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
 
 /* eslint-disable react/no-multi-comp */
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
+/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. 
+/* Use CSS or styled components for such things.
  */
-const HomepageHeading = ({ mobile }) => (
-  <Container text>
+const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
+  <Container text style={{ background: '#36393e' }}>
     <Header
       as='h1'
       content='Forking Delicious'
@@ -50,20 +48,25 @@ const HomepageHeading = ({ mobile }) => (
       content='Find a Recipe / Make a Recipe / Share a Recipe'
       inverted
       style={{
+        color: '#f6f7f5',
+        background: '#36393e',
         fontSize: mobile ? '1.5em' : '1.7em',
         fontWeight: 'normal',
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
     />
-    <Button primary size='huge'>
+    <Button
+      style={{ backgroundColor: '#f6f7f5', color: '#5b5391' }}
+      size='huge'
+    >
       Pick a Recipe
-      <Icon name='right arrow' />
+      <Icon name='right arrow' style={{ color: '#5b5391' }} />
     </Button>
   </Container>
 );
 
 HomepageHeading.propTypes = {
-  mobile: PropTypes.bool,
+  /*end mobile  HOMEPAGE*/ mobile: PropTypes.bool,
 };
 
 /* Heads up!
@@ -71,6 +74,7 @@ HomepageHeading.propTypes = {
  * It can be more complicated, but you can create really flexible markup.
  */
 class DesktopContainer extends Component {
+  /*Desktop  NAVIGATION MENU*/
   state = {};
 
   hideFixedMenu = () => this.setState({ fixed: false });
@@ -90,7 +94,12 @@ class DesktopContainer extends Component {
           <Segment
             inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em' }}
+            style={{
+              minHeight: 700,
+              padding: '1em 0em',
+              background: '#7d7d74',
+              color: '#f6f7f5',
+            }}
             vertical
           >
             <Menu
@@ -113,8 +122,11 @@ class DesktopContainer extends Component {
                   <Button
                     as='a'
                     inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: '0.5em' }}
+                    style={{
+                      marginLeft: '0.5em',
+                      background: '#36393e',
+                      color: '#f6f7f5',
+                    }}
                   >
                     Sign Up
                   </Button>
@@ -128,7 +140,7 @@ class DesktopContainer extends Component {
         {children}
       </Responsive>
     );
-  }
+  } /*end Desktop   NAVIGATION MENU*/
 }
 
 DesktopContainer.propTypes = {
@@ -136,6 +148,7 @@ DesktopContainer.propTypes = {
 };
 
 class MobileContainer extends Component {
+  /*Mobile   NAVIGATION MENU*/
   state = {};
 
   handleSidebarHide = () => this.setState({ sidebarOpened: false });
@@ -159,6 +172,11 @@ class MobileContainer extends Component {
           onHide={this.handleSidebarHide}
           vertical
           visible={sidebarOpened}
+          style={{
+            marginLeft: '0.5em',
+            background: '#36393e',
+            color: '#f6f7f5',
+          }}
         >
           <Menu.Item as='a' active>
             Home
@@ -177,15 +195,23 @@ class MobileContainer extends Component {
             vertical
           >
             <Container>
-              <Menu inverted pointing secondary size='large'>
+              <Menu style={{ background: '918b93' }} pointing size='large'>
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name='sidebar' />
                 </Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a' inverted>
+                  <Button as='a' inverted style={{ background: '#5b5391' }}>
                     Log in
                   </Button>
-                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
+                  <Button
+                    as='a'
+                    inverted
+                    style={{
+                      marginLeft: '0.5em',
+                      background: '#5b5391',
+                      color: '#f6f7f5',
+                    }}
+                  >
                     Sign Up
                   </Button>
                 </Menu.Item>
@@ -199,7 +225,7 @@ class MobileContainer extends Component {
       </Responsive>
     );
   }
-}
+} /*End Mobile MENU*/
 
 MobileContainer.propTypes = {
   children: PropTypes.node,
@@ -216,10 +242,9 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 };
 
-
 const Landing = () => (
   <ResponsiveContainer>
-    <Grid columns={3} divided>
+    <Grid columns={3} divided style={{ background: '#726f79' }}>
       <Grid.Row>
         <Grid.Column>
           <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
@@ -268,15 +293,6 @@ const Landing = () => (
 
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
-        <Divider
-          as='h4'
-          className='header'
-          horizontal
-          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
-        >
-          <a href='#'>Extra Extra</a>
-        </Divider>
-
         <Header as='h3' style={{ fontSize: '2em' }}>
           A Few of Our Favorite Chefs
         </Header>
@@ -290,7 +306,7 @@ const Landing = () => (
       </Container>
     </Segment>
 
-    <Segment inverted vertical style={{ padding: '5em 0em' }}>
+    <Segment inverted vertical style={{ padding: '1.5em 0em' }}>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>

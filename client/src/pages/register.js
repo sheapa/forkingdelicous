@@ -63,11 +63,12 @@ const Register = ({ signupCallback }) => {
         <Image
           src='https://live.staticflickr.com/65535/49986191503_43be3abc1e.jpg'
           size='large'
+          centered
         />
         <Header as='h2' textAlign='center'>
           Sign Up for Forking Delicious Recipes
         </Header>
-        <Segment>
+        <Segment style={{ background: '#726f79' }}>
           <Form action='/register' method='POST' size='large'>
             <Form.Input
               fluid
@@ -95,7 +96,12 @@ const Register = ({ signupCallback }) => {
               placeholder='Password'
               autoComplete='off'
             />
-            <Button color='#726F79' value='submit' fluid size='large'>
+            <Button
+              style={{ background: '#7d7d74', color: '#f6f7f5' }}
+              value='submit'
+              fluid
+              size='large'
+            >
               Sign Me Up
             </Button>
           </Form>
