@@ -19,7 +19,7 @@ const IngredientsSchema = new Schema({
 // Spencer, what are the requirements for the "indexName" here?
 IngredientsSchema.plugin(mongoolia, {
     appId: 'ZCHNRWDF6B',
-    apiKey: 'ee98d1240ef700b8e63342844d760803',
+    apiKey: 'af3f80f79bfd2b7d0e7832aba6f0a582',
     indexName: 'ingredientsDB'
   });
 

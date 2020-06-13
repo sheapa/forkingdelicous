@@ -16,7 +16,7 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import "./index.css"
-import SearchBar from '../components/Search'
+// import SearchBar from '../components/Search'
 
 
 // Heads up!
@@ -60,7 +60,7 @@ const HomepageHeading = ({ mobile }) => (
       Pick a Recipe
       <Icon name='right arrow' />
     </Button>
-    <SearchBar/>
+    {/* <SearchBar/> */}
   </Container>
 );
 

@@ -3,7 +3,7 @@
 import React from 'react';
 import algoliasearch from "algoliasearch";
 import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
-// import recipeJSON from '../../recipe.json';
+
 
 const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //this is my code
 

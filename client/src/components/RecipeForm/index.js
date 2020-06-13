@@ -1,20 +1,55 @@
 import React, { Component } from 'react'
-// import InputField from '../InputField'
-import SubmitButton from '../SubmitButton'
-// import { Form, Radio, TextArea,} from 'semantic-ui-react'
-import { Form, Input, TextArea } from 'semantic-ui-react'
+import { Form, Input, TextArea, Button} from 'semantic-ui-react'
+import API from '../../utils/API'
 
-
-
+function SubmitButton (){
+  return (
+    <Button value='submit' placeholder='Save' content='Save'/>
+  )
+}
 
 class RecipeForm extends Component {
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.getRecipes();
+  };
+  
+  handleRecipeCreate = (event) => {
+    const recipe = event.target.value
+    document.getElementById("IngredientForm").submit();
+  
+  console.log(recipe)
+  
+    API.saveRecipe({
+        title: recipe.title,
+        description: recipe.description,
+        instruction: recipe.instruction,
+        ingredients: recipe.ingredients.id,
+        tips: recipe.tips,
+        yeild: recipe.yeild,
+        categories: recipe.categories,
+        feedback: recipe.feedback,
+        activeTime: recipe.activeTime,
+        inActiveTime: recipe.inActiveTime,
+        addons: recipe.addons,
+        forkedFrom: recipe.forkedFrom,
+        images: recipe.images,
+        pubDate: recipe.pubDate,
+        likes: recipe.likes,
+        saves: recipe.saves,
+        forks: recipe.forks,
+        author: recipe.author
+    })
+    // .then(() => this.getRecipes(
+    //     console.log("recipe created")
+    // )
+    // );
+  };
     
     render() {
-                
-    // const { value } = this.state
 
     return (
-      <Form action='/api/recipeCreate' method='POST' >
+      <Form action='/api/recipeCreate' method='POST' onSubmit={this.handleRecipeCreate}>
         <Form.Input 
           label='Title'
           placeholder='Title' 
@@ -36,129 +71,50 @@ class RecipeForm extends Component {
           placeholder='Tell us what to do....'
           width={12}
         />
-          {/* <Form.Field
+            <Form.Field
             control={Input}
-            label='Ingredient'
-            name="ingredients"
-            placeholder='Ingredient'
-            width={12}
-          /> */}
-        {/* <Form.Field
-            control={InputField}
-            label='Ingredient'
-            placeholder='Ingredient'
-            width={12}
-          />
-          <Form.Field
-            control={InputField}
-            label='Tips'
-            placeholder='Tips'
-            width={12}
-          />
-          <Form.Field
-            control={InputField}
-            label='Categories'
-            placeholder='Categories'
-            width={12}
-          />
-          <Form.Field
-            control={InputField}
-            label='Feedback'
-            placeholder='Feedback'
-            width={12}
-          />
-          <Form.Field
-            control={InputField}
             label='Active Time'
             placeholder='Active Time'
             width={12}
           />
           <Form.Field
-            control={InputField}
+            control={Input}
             label='Inactive Time'
             placeholder='Inactive Time'
             width={12}
           />
           <Form.Field
-            control={InputField}
+            control={Input}
             label='Addons'
             placeholder='Addons'
             width={12}
           />
           <Form.Field
-            control={InputField}
-            label='Forked From'
-            placeholder='Forked From'
+            control={Input}
+            label='Tips'
+            placeholder='Tips'
             width={12}
           />
           <Form.Field
-            control={InputField}
-            label='Images'
-            placeholder='Images'
+            control={Input}
+            label='Categories'
+            placeholder='Categories'
             width={12}
           />
-          <Form.Field
-            control={InputField}
-            label='Date Published'
-            placeholder='Date Published'
-            width={12}
-          /> */}
-          <Form.Field
+          {/* <Form.Field
             control={Input}
             label='Likes'
             name="likes"
             placeholder='Likes'
             width={12}
-          />
-          {/* <Form.Field
-            control={InputField}
-            label='Saves'
-            placeholder='Saves'
-            width={12}
-          />
+          /> */}
+        {/*
           <Form.Field
             control={InputField}
-            label='Forks'
-            placeholder='Forks'
+            label='Images'
+            placeholder='Images'
             width={12}
-          />
-          <Form.Field
-            control={InputField}
-            label='Author'
-            placeholder='Author'
-            width={12}
-          /> */} 
-        {/* <Form.Group inline>
-          <label>Yeild</label>
-          <Form.Field
-            control={Radio}
-            label='One'
-            value='1'
-            checked={value === '1'}
-            onChange={this.handleChange}
-          />
-          <Form.Field
-            control={Radio}
-            label='Two'
-            value='2'
-            checked={value === '2'}
-            onChange={this.handleChange}
-          />
-          <Form.Field
-            control={Radio}
-            label='Three'
-            value='3'
-            checked={value === '3'}
-            onChange={this.handleChange}
-          />
-          <Form.Field
-            control={Radio}
-            label='Four'
-            value='4'
-            checked={value === '4'}
-            onChange={this.handleChange}
-          />
-        </Form.Group> */}
+          /> */}
         <Form.Field control={SubmitButton}>Submit</Form.Field>
       </Form>
     )
