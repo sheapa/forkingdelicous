@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const mongoolia = require('mongoolia').default;
 
+
 const Schema = mongoose.Schema;
 
 const RecipeSchema = new Schema({
@@ -9,6 +10,8 @@ const RecipeSchema = new Schema({
   
   description: {type: Schema.Types.String, algoliaIndex: true},
   
+  ingredients: [{ type: Schema.Types.ObjectId, ref: "Ingredients", algoliaIndex: true }],
+
   instruction: [{type: Schema.Types.String, algoliaIndex: true}],
   
   tips: {type: Schema.Types.String, algoliaIndex: true},
@@ -45,7 +48,7 @@ const RecipeSchema = new Schema({
 
 RecipeSchema.plugin(mongoolia, {
   appId: 'ZCHNRWDF6B',
-  apiKey: 'ee98d1240ef700b8e63342844d760803',
+  apiKey: 'af3f80f79bfd2b7d0e7832aba6f0a582',
   indexName: 'recipeDB'
 });
 

@@ -1,15 +1,15 @@
 const express = require("express");
 const passport = require("../middlewares/passport");
-const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
+// const auth = require("../middlewares/passport/auth"); // Will be used to protect routes. 
 const multer = require("../middlewares/multer/multerController");
 const router = express.Router();
 // const apiRoutes = require("./api");
 const db = require("../models");
-const recipeController = require("../Deprecated/forkingController");
+// const recipeController = require("../Deprecated/forkingController");
 
-// router.route("/recipeCreate") this may not be the correct path???
-router.route("/api/recipeCreate")
-.post(recipeController.createRecipe)
+// // router.route("/recipeCreate") this may not be the correct path???
+// router.route("/api/recipeCreate")
+// .post(recipeController.createRecipe)
 
 module.exports = router
 // *** TO DO add additional userdata to create & login request.
@@ -84,15 +84,21 @@ router.post("/api/ingredients", (req,res) => {
     name: name, 
     quantity: quantity, 
     unit: unit 
-  })
+  },
+  function ( err, response) {
+    console.log(response);
+    
+  }
+  )
 });
 
 router.post("/api/recipeCreate", (req,res) => {
-  const {title, description, instruction, tips, yeild, categories, activeTime, inActiveTime, addons, forkedFrom, images, pubDate, author} = req.body;
+  const {title, description, ingredients, instruction, tips, yeild, categories, activeTime, inActiveTime, addons, forkedFrom, images, pubDate, author} = req.body;
   
   db.Recipe.create({ 
     title: title,
     description: description,
+    ingredients: ingredients,
     instruction: instruction,
     tips: tips,
     yeild: yeild,

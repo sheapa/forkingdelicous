@@ -7,6 +7,10 @@ findByRecipeId: function(id){
 
 saveRecipe: function(recipeData){
     return axios.post("/api/recipe", recipeData)
+},
+
+saveIngredient: function(ingredientData){
+    return axios.post("/api/ingredients", ingredientData)
 }
 };
 
