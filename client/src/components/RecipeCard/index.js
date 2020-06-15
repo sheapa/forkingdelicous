@@ -1,15 +1,15 @@
 import React from 'react'
-import SaveInput from '../components/InputField'
+// import SaveInput from '../components/InputField'
 import { Card, Icon, Image } from 'semantic-ui-react'
-import MyImage from '../../src/assets/images/orcishLibrarian.jpg'
+import MyImage from '../../Images/recipes/orcishLibrarian.jpg'
 
 const RecipeCard = () => (
   <Card>
     <Image src= {MyImage} wrapped ui={false} />
     <Card.Content>
     <Card.Header>
-        <SaveInput placeholder= 'Book Sandwhich'>
-        </SaveInput>
+        {/* <SaveInput placeholder= 'Book Sandwhich'>
+        </SaveInput> */}
         </Card.Header>
     <Card.Meta>'Recipe'</Card.Meta>
     <Card.Description>'A satisfying snack for your body and mind.'</Card.Description>

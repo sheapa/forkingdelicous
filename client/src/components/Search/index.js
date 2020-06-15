@@ -2,7 +2,8 @@
 
 import React from 'react';
 import algoliasearch from "algoliasearch";
-import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
+// import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
+import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy} from "react-instantsearch-dom";
 
 
 const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //this is my code
@@ -28,6 +29,7 @@ index
             searchableAttributes: [
                 'title',
                 'ingredients',
+                'description',
                 'yield',
                 'categories',
                 'likes',
@@ -60,7 +62,7 @@ translations={{placeholder:"Search for recipe"}}
 )
                         
 const Hit = ({hit}) => (
-< a href={'/'}> 
+< a href={'/recipePage/'}> 
 <div className='card'>
 <div className='card-image'>
     <img src={hit.image} alt={hit.name} className="image"/>
@@ -69,12 +71,13 @@ const Hit = ({hit}) => (
         <Highlight attribute='title' hit={hit} className="card-title" />
         <Highlight attribute='description' hit={hit} className='card-description'/>
         <div className='card-likes'>Likes:{hit.likes}</div>
-        <div className='card-author'> 
-        {/* {""}<span> {hit.author[0]}</span> */}
-        {/* <span>{hit.author[1]}</span> {""} */}
+        <div className='card-likes'>Description:{hit.descritpion}</div>
+        {/* <div className='card-author'> 
+        {""}<span> {hit.title[0]}</span>
+        <span>{hit.title[1]}</span> {""} */}
         </div>
     </div>
-</div>
+{/* </div> */}
 </a>
 );
 const Content = () =>(
@@ -95,7 +98,7 @@ const Content = () =>(
     <Hits hitComponent={Hit}/>
     <div>
         {""}
-        <Pagination/>
+        {/* <Pagination/> */}
     </div>
 </main>
 )
