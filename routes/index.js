@@ -17,6 +17,7 @@ module.exports = router
 // New User
 router.post("/api/create", (req,res) => {
   const {username, password} = req.body;
+  console.log(req.body)
   
   db.User.create({username: username, password: password}, function(err, user) {
     if (err) {
@@ -30,7 +31,7 @@ router.post("/api/create", (req,res) => {
       }
     } else {
      // 307 Temporary redirect to login
-      res.redirect(307, "/user");
+      res.redirect(307, "/login");
     }
   })
 });
