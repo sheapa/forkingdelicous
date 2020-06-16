@@ -4,6 +4,7 @@ import RecipeForm from "../components/RecipeForm";
 // import API from '../utils/API'
 import IngredientForm from "../components/IngredientForm";
 import IngredientsAddedList from "../components/IngredientsAddedList";
+import ImageUploadForm from "../components/ImageUploadForm";
 
 class RecipeCreate extends Component {
   constructor(props) {
@@ -61,6 +62,7 @@ class RecipeCreate extends Component {
       <div style={{ display: "flex" }}>
         <div>
           <IngredientForm q={this.state.q} addIngredient={this.addIngredient} />
+          <ImageUploadForm q={this.state.q} />
           <RecipeForm
             //  handleRecipeCreate={this.handleRecipeCreate}
             //  handleIngredientCreate={this.handleIngredientCreate}
