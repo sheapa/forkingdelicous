@@ -5,8 +5,9 @@ import Landing from './pages/landing';
 import Login from './pages/login';
 import Register from './pages/register';
 import User from './pages/user';
-import RecipePage from './pages/recipe';
+import Credits from './pages/credits';
 import RecipeCreate from './pages/recipeCreate';
+import RecipeDisplay from './pages/recipeDisplay';
 
 // const pageToShow = (pageName) => {
   //   if (pageName === "Landing") return <Landing />;
@@ -29,9 +30,10 @@ const App = ({ userInfo }) => {
         <Route exact path='/' component={Landing} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/recipePage' component={RecipePage} />
+        <Route exact path='/recipeDisplay' component={RecipeDisplay} />
         <Route exact path='/recipeCreate' component={RecipeCreate} />
         <Route exact path='/user' component={User} />
+        <Route exact path='/credits' component={Credits} />
       </ConfigContext.Provider>
     </Router>
   );
