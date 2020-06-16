@@ -32,37 +32,46 @@ const getWidth = () => {
  */
 const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
   <Container text style={{ background: '#36393e' }}>
-    <Header
-      as='h1'
-      content='Forking Delicious'
-      inverted
-      style={{
-        fontSize: mobile ? '2em' : '4em',
-        fontWeight: 'normal',
-        marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '3em',
-      }}
-    />
-    <Header
-      as='h2'
-      content='Find a Recipe / Make a Recipe / Share a Recipe'
-      inverted
-      style={{
-        color: '#f6f7f5',
-        background: '#36393e',
-        fontSize: mobile ? '1.5em' : '1.7em',
-        fontWeight: 'normal',
-        marginTop: mobile ? '0.5em' : '1.5em',
-      }}
-    />
-    <Button
-      style={{ backgroundColor: '#f6f7f5', color: '#5b5391' }}
-      size='huge'
-    >
-      Pick a Recipe
-      <Icon name='right arrow' style={{ color: '#5b5391' }} />
-    </Button>
-    {/* <SearchBar/> */}
+    <Grid columns={2} relaxed='very' stackable>
+      <Grid.Column>
+        <div>
+          <Image src='./assets/images/orcishLibrarian.jpg' size='medium' />
+        </div>
+      </Grid.Column>
+      <Grid.Column size='md-6'>
+        <Header
+          as='h1'
+          content='Forking Delicious'
+          inverted
+          style={{
+            fontSize: mobile ? '2em' : '4em',
+            fontWeight: 'normal',
+            marginBottom: 0,
+            marginTop: mobile ? '1.5em' : '3em',
+          }}
+        />
+        <Header
+          as='h2'
+          content='Find a Recipe / Make a Recipe / Share a Recipe'
+          inverted
+          style={{
+            color: '#f6f7f5',
+            background: '#36393e',
+            fontSize: mobile ? '1.5em' : '1.7em',
+            fontWeight: 'normal',
+            marginTop: mobile ? '0.5em' : '1.5em',
+          }}
+        />
+        <Button
+          style={{ backgroundColor: '#f6f7f5', color: '#5b5391' }}
+          size='huge'
+        >
+          Pick a Recipe
+          <Icon name='right arrow' style={{ color: '#5b5391' }} />
+        </Button>
+        {/* <SearchBar/> */}
+      </Grid.Column>
+    </Grid>
   </Container>
 );
 
@@ -108,7 +117,7 @@ class DesktopContainer extends Component {
               inverted={!fixed}
               pointing={!fixed}
               secondary={!fixed}
-              size='large'
+              // size='large'
             >
               <Container>
                 <Menu.Item as='a' active>
