@@ -4,7 +4,7 @@ const mongoolia = require('mongoolia').default;
 const Schema = mongoose.Schema;
 
 const IngredientsSchema = new Schema({ 
-  ingredients: {
+
       
     name: {type: Schema.Types.String, algoliaIndex: true},
       
@@ -13,7 +13,7 @@ const IngredientsSchema = new Schema({
       unit: {type: Schema.Types.String, algoliaIndex: true},
 
       recipe: { type: Schema.Types.ObjectId, ref: "Recipe", algoliaIndex: true }
-  },
+
 });
 
 // Spencer, what are the requirements for the "indexName" here?
