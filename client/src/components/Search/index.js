@@ -141,6 +141,7 @@ const Hit = ({hit}) => (
     </div>
 </a>
 );
+
 const Content = () =>(
 <main>
     <div className="information">

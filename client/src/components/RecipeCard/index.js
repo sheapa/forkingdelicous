@@ -7,7 +7,7 @@ const RecipeCard = () => (
   <Menu small>
   <Container>
   <Card fluid>
-    <Image src= {MyImage} wrapped ui={false} tiny/>
+    <Image src= {MyImage} wrapped ui={false}/>
     <Card.Header>
         </Card.Header>
     <Card.Meta as="div">'Recipe'</Card.Meta>

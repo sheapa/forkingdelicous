@@ -5,7 +5,7 @@ import Landing from './pages/landing';
 import Login from './pages/login';
 import Register from './pages/register';
 import User from './pages/user';
-import RecipePage from './pages/recipe';
+import RecipeDisplay from './pages/recipeDisplay';
 import RecipeCreate from './pages/recipeCreate';
 
 // const pageToShow = (pageName) => {
@@ -29,7 +29,7 @@ const App = ({ userInfo }) => {
         <Route exact path='/' component={Landing} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/recipePage' component={RecipePage} />
+        <Route exact path='/recipeDisplay' component={RecipeDisplay} />
         <Route exact path='/recipeCreate' component={RecipeCreate} />
         <Route exact path='/user' component={User} />
       </ConfigContext.Provider>
