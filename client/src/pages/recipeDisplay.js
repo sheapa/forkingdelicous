@@ -1,10 +1,10 @@
 import React from 'react'
 import RecipeCard from '../components/RecipeCard'
 
-const RecipePage = () => {
+const RecipeDisplay = () => {
 return (
 <RecipeCard/>
 )
 }
 
-export default RecipePage;
+export default RecipeDisplay;
