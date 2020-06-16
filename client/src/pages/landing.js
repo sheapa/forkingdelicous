@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -109,6 +108,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item as='a'>Chef's Corner</Menu.Item>
                 <Menu.Item as='a'>Create a Recipe</Menu.Item>
+                <Search/>
                 <Menu.Item position='right'>
                   <Link to={"/login"}>
                     <Button  as='a' inverted={!fixed}>

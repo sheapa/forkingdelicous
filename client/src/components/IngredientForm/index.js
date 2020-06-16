@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { Form, Input, Button } from "semantic-ui-react";
 import API from "../../utils/API";
 
+
 function SubmitButton() {
   return <Button value="submit" placeholder="Save" content="Save" />;
 }
+
 
 class IngredientForm extends Component {
   constructor(props) {
