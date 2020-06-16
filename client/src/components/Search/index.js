@@ -1,11 +1,8 @@
-// #/src/components/Search.js
-
 import React from 'react';
 import algoliasearch from "algoliasearch";
 // import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
 // import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy, connectStateResults} from "react-instantsearch-dom";
 import {InstantSearch, SearchBox, Hits, Index, connectStateResults} from "react-instantsearch-dom";
-
 
 const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //this is my code
 
@@ -112,6 +109,7 @@ index
 //           );
 // });
 
+
 // const Header = () =>(       
 // <header className='header'>
 // <SearchBox
@@ -120,6 +118,7 @@ index
 // />
 // </header>      
 // )
+
                         
 // const Hit = ({hit}) => (
 // < a href={'/recipePage/'}> 
