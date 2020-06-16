@@ -18,6 +18,7 @@ import RecipeDisplay from './pages/recipeDisplay';
 
 export const ConfigContext = React.createContext();
 
+
 const configValue = {
   isLoggedIn: false,
 };
@@ -30,7 +31,8 @@ const App = ({ userInfo }) => {
         <Route exact path='/' component={Landing} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/recipeDisplay' component={RecipeDisplay} />
+        {/* code below may need to be directed to RecipeInfo component??? */}
+        <Route exact path='/recipeDisplay/:recipeId' component={RecipeDisplay} /> 
         <Route exact path='/recipeCreate' component={RecipeCreate} />
         <Route exact path='/user' component={User} />
         <Route exact path='/credits' component={Credits} />

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Input, TextArea, Button } from "semantic-ui-react";
 import API from "../../utils/API";
+// import { withRouter } from "react-router-dom";
 
 function SubmitButton() {
   return <Button value="submit" placeholder="Save" content="Save" />;
@@ -21,6 +22,7 @@ class RecipeForm extends Component {
     // const recipe = event.target.value
     // document.getElementById("IngredientForm").submit();
     const recipe = this.props.recipe;
+
     API.saveRecipe({
       title: recipe.title,
       description: recipe.description,
@@ -42,7 +44,17 @@ class RecipeForm extends Component {
       // author: recipe.author,
     }).then(function (response) {
       console.log(response);
-      console.log(`recipe created`);
+      // console.log(req.body);
+      // console.log(`recipe created with id: ${response.config.data._id}`);
+      // console.log(`recipe created with id: ${response.data.config.data}`);
+      // console.log(`recipe created with id: ${response.data.config.data.title}`);
+      // console.log(`recipe created with id: ${response._id}`);
+      // console.log(`recipe created with id: ${response.ObjectId._id}`);
+      // console.log(`recipe created with id: ${recipeData._id}`);
+      // console.log(`recipe created with id: ${response.ObjectId}`);
+      // this.props.history.push(`/recipeDisplay/${response.config.data._id}`);
+      // this.props.history.push(`/recipeDisplay/${response.config.data.title}`);
+      // this.props.history.push(`/recipeDisplay/${response.data.config.data.title}`);
     });
   };
 
@@ -132,4 +144,5 @@ class RecipeForm extends Component {
   }
 }
 
+// export default withRouter(RecipeForm);
 export default RecipeForm;

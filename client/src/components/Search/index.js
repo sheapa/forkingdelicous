@@ -4,7 +4,7 @@ import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from 
 // import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy, connectStateResults} from "react-instantsearch-dom";
 // import {InstantSearch, SearchBox, Hits, Index, connectStateResults} from "react-instantsearch-dom";
 
-const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //this is my code
+const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //change to search only?
 
 
 const index = searchClient.initIndex('recipeDB');
@@ -127,7 +127,7 @@ translations={{placeholder:"Search for recipe"}}
 
                         
 const Hit = ({hit}) => (
-< a href={'/recipePage/'}> 
+< a href={'/recipeDisplay/'}> 
 <div className='card'>
 <div className='card-image'>
     <img src={hit.image} alt={hit.name} className="image"/>

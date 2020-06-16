@@ -1,10 +1,13 @@
-import React from 'react'
-import RecipeCard from '../components/RecipeCard'
+import React, {Component} from 'react'
+import RecipeInfo from '../components/RecipeInfo';
 
-const RecipeDisplay = () => {
-return (
-<RecipeCard/>
+
+class RecipeDisplay extends Component {
+    render(){
+    return (
+<RecipeInfo/>
 )
+        }
 }
 
 export default RecipeDisplay;

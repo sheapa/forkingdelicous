@@ -1,68 +1,193 @@
-import React from 'react'
-// import SaveInput from '../components/InputField'
+// import React from 'react'
+import React, {Component} from 'react'
+import { get } from 'axios';
 import { Card, Icon, Image, Container, Menu } from 'semantic-ui-react'
 import MyImage from '../../Images/recipes/orcishLibrarian.jpg'
 
-const RecipeCard = () => (
-  <Menu small>
-  <Container>
-  <Card fluid>
-    <Image src= {MyImage} wrapped ui={false}/>
-    <Card.Header>
-        </Card.Header>
-    <Card.Meta as="div">'Recipe'</Card.Meta>
-   <Card.Content>
-     ingredients
-     </Card.Content>
-   <Card.Content>
-     instructions
-     </Card.Content>
-   <Card.Content>
-     tips
-     </Card.Content>
-   <Card.Content>
-     yeild
-     </Card.Content>
-   <Card.Content>
-     categories
-     </Card.Content>
-   <Card.Content>
-     feedback
-     </Card.Content>
-   <Card.Content>
-     activeTime
-     </Card.Content>
-   <Card.Content>
-     inActiveTime
-     </Card.Content>
-   <Card.Content>
-     addons
-     </Card.Content>
-   <Card.Content>
-     forkedFrom
-     </Card.Content>
-   <Card.Content>
-     pubDate
-     </Card.Content>
-   <Card.Content>
-     saves
-     </Card.Content>
-   <Card.Content>
-     forks
-     </Card.Content>
-   <Card.Content>
-     author
-     </Card.Content>
-    <Card.Description>'A satisfying snack for your body and mind.'</Card.Description>
-    <Card.Content extra>
-    <a>
-    <Icon name='user' />
-    16 likes
-  </a>
-        </Card.Content> 
-  </Card>
-  </Container>
-  </Menu>
-)
 
+class RecipeCard extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      recipe: [],
+    };
+  
+    this.setPage = this.setPage.bind(this);
+  
+  }
+  componentWillReceiveProps({ location = {} }) {
+    //the below path could be wrong??? may also need or be able to add '/recipeDisplay' to build for both starting page scenarios
+    if (location.pathname === '/recipeCreate' && location.pathname !== this.props.location.pathname) {
+      this.getRecipe();
+    }
+  }
+
+  getUsers() {
+    get('/api/recipe')
+      .then(({ data }) => {
+        const { recipe } = data;
+    
+
+        this.setState({
+          recipe: data.recipe,
+        });
+      });
+  }
+
+  setPage(page) {
+    return () => {
+      this.setState({ page });
+    };
+  }
+  componentDidMount() {
+    this.getRecipe();
+  }
+  render (){
+    const { recipe } = this.state;
+    return(
+      <Menu small>
+      <Container>
+      <Card fluid>
+        <Image src= {MyImage} wrapped ui={false}/>
+        <Card.Header>
+          {recipe.title}
+            </Card.Header>
+        <Card.Meta as="div"></Card.Meta>
+       <Card.Content>
+         {recipe.ingredients}
+         </Card.Content>
+       <Card.Content>
+         {recipe.instructions}
+         </Card.Content>
+       <Card.Content>
+         {recipe.tips}
+         </Card.Content>
+       <Card.Content>
+         {recipe.yeild}
+         </Card.Content>
+       <Card.Content>
+         {recipe.categories}
+         </Card.Content>
+       <Card.Content>
+         {recipe.feedback}
+         </Card.Content>
+       <Card.Content>
+         {recipe.activeTime}
+         </Card.Content>
+       <Card.Content>
+         {recipe.inActiveTime}
+         </Card.Content>
+       <Card.Content>
+         {recipe.addons}
+         </Card.Content>
+       <Card.Content>
+         {recipe.forkedFrom}
+         </Card.Content>
+       <Card.Content>
+         {recipe.pubDate}
+         </Card.Content>
+       <Card.Content>
+         {recipe.saves}
+         </Card.Content>
+       <Card.Content>
+         {recipe.forks}
+         </Card.Content>
+       <Card.Content>
+         {recipe.author}
+         </Card.Content>
+        <Card.Description>'A satisfying snack for your body and mind.'</Card.Description>
+        <Card.Content extra>
+        <a>
+        <Icon name='user' />
+        16 {recipe.likes}
+      </a>
+            </Card.Content> 
+      </Card>
+      </Container>
+      </Menu>
+    )
+  }
+}
 export default RecipeCard;
+// const RecipeCard = ({
+//   title, 
+//   ingredients, 
+//   instructions, 
+//   tips, 
+//   yeild, 
+//   categories, 
+//   feedback, 
+//   activeTime, 
+//   inActiveTime, 
+//   addons, 
+//   forkedFrom, 
+//   pubDate, 
+//   saves, 
+//   forks, 
+//   author, 
+//   likes}) => (
+
+  // <Menu small>
+  // <Container>
+  // <Card fluid>
+  //   <Image src= {MyImage} wrapped ui={false}/>
+  //   <Card.Header>
+  //     {title}
+  //       </Card.Header>
+  //   <Card.Meta as="div"></Card.Meta>
+  //  <Card.Content>
+  //    {ingredients}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {instructions}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {tips}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {yeild}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {categories}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {feedback}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {activeTime}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {inActiveTime}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {addons}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {forkedFrom}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {pubDate}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {saves}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {forks}
+  //    </Card.Content>
+  //  <Card.Content>
+  //    {author}
+  //    </Card.Content>
+  //   <Card.Description>'A satisfying snack for your body and mind.'</Card.Description>
+  //   <Card.Content extra>
+  //   <a>
+  //   <Icon name='user' />
+  //   16 {likes}
+  // </a>
+  //       </Card.Content> 
+  // </Card>
+  // </Container>
+  // </Menu>
+// )
+
+// export default RecipeCard;
