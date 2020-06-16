@@ -49,68 +49,68 @@ index
         </div>
         </InstantSearch> */}
         
-function Search () {            
-return (
-<InstantSearch searchClient={searchClient} indexName="recipeDB">
-<SearchBox />
-<AllResults>
-  <div>
-    <Index indexName="recipeDB">
-      <IndexResults>
-        <div>
-          <div>first: </div>
-          <Hits />
-        </div>
-      </IndexResults>
-    </Index>
-    <Index indexName="recipeDB">
-      <IndexResults>
-        <div>
-          <div>second: </div>
-          <Hits />
-        </div>
-      </IndexResults>
-    </Index>
-    <Index indexName="recipeDB">
-      <IndexResults>
-        <div>
-          <div>third: </div>
-          <Hits />
-        </div>
-      </IndexResults>
-    </Index>
-  </div>
-</AllResults>
-</InstantSearch>
-)};
+// function Search () {            
+// return (
+// <InstantSearch searchClient={searchClient} indexName="recipeDB">
+// <SearchBox />
+// <AllResults>
+//   <div>
+//     <Index indexName="recipeDB">
+//       <IndexResults>
+//         <div>
+//           <div>first: </div>
+//           <Hits />
+//         </div>
+//       </IndexResults>
+//     </Index>
+//     <Index indexName="recipeDB">
+//       <IndexResults>
+//         <div>
+//           <div>second: </div>
+//           <Hits />
+//         </div>
+//       </IndexResults>
+//     </Index>
+//     <Index indexName="recipeDB">
+//       <IndexResults>
+//         <div>
+//           <div>third: </div>
+//           <Hits />
+//         </div>
+//       </IndexResults>
+//     </Index>
+//   </div>
+// </AllResults>
+// </InstantSearch>
+// )};
 
-const IndexResults = connectStateResults(
-({ searchState, searchResults, children }) =>
-searchResults && searchResults.nbHits !== 0 ? (
-  children
-) : (
-  <div>
-    No results have been found for {searchState.query} and index{' '}
-    {searchResults ? searchResults.index : ''}
-  </div>
-)
-);
+// const IndexResults = connectStateResults(
+// ({ searchState, searchResults, children }) =>
+// searchResults && searchResults.nbHits !== 0 ? (
+//   children
+// ) : (
+//   <div>
+//     No results have been found for {searchState.query} and index{' '}
+//     {searchResults ? searchResults.index : ''}
+//   </div>
+// )
+// );
 
-const AllResults = connectStateResults(({ allSearchResults, children }) => {
-const hasResults =
-allSearchResults &&
-Object.values(allSearchResults).some(results => results.nbHits > 0);
-return !hasResults ? (
-<div>
-  <div>No results in category, products or brand</div>
-  <Index indexName="recipeDB" />
-  <Index indexName="recipeDB" />
-  <Index indexName="recipeDB" />
-</div>
-) : (
-children
-          );
-});
+// const AllResults = connectStateResults(({ allSearchResults, children }) => {
+// const hasResults =
+// allSearchResults &&
+// Object.values(allSearchResults).some(results => results.nbHits > 0);
+// return !hasResults ? (
+// <div>
+//   <div>No results in category, products or brand</div>
+//   <Index indexName="recipeDB" />
+//   <Index indexName="recipeDB" />
+//   <Index indexName="recipeDB" />
+// </div>
+// ) : (
+// children
+//           );
+// });
 
 // const Header = () =>(       
 // <header className='header'>
@@ -167,4 +167,5 @@ children
 //   )
 // );
 
-export default Search;
+// export default Search;
+
