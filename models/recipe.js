@@ -30,7 +30,7 @@ const RecipeSchema = new Schema({
   
   forkedFrom: { type: Schema.Types.ObjectId, ref: "User", algoliaIndex: true },
   
-  // images: [Schema.Types.String],
+  images: [Schema.Types.String],
   
   pubDate: {
     type: Schema.Types.Date,
