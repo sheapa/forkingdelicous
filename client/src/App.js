@@ -7,12 +7,12 @@ import Register from './pages/register';
 // import User from './pages/user';
 import RecipeCreate from "../src/pages/recipeCreate" 
 
-const pageToShow = (pageName) => {
+// const pageToShow = (pageName) => {
   //   if (pageName === "Landing") return <Landing />;
-  if (pageName === 'Register') return <Register />;
-  if (pageName === 'Login') return <Login />;
+  // if (pageName === 'Register') return <Register />;
+  // if (pageName === 'Login') return <Login />;
   //   if (pageName === "User") return <User />;
-};
+// };
 
 export const ConfigContext = React.createContext();
 
