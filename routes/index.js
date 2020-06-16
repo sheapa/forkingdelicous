@@ -57,16 +57,16 @@ router.post(
 // Upload multiple recipe images- currently set to max 6 images
 // Note that the name of the file field should be the same as the myFile argument passed to the upload.single function.
 router.post(
-  "/api/uploadRecipeImages",
-  multer.recipeUpload.array("recipeImages", 6),
+  "/api/uploadRecipeImage",
+  multer.recipeUpload.single("recipeImage"),
   (req, res, next) => {
-    const files = req.files;
+    const file = req.file;
     if (!files) {
       const error = new Error("Please upload a file");
       error.httpStatusCode = 400;
       return next(error);
     }
-    res.send(files);
+    res.send(file);
   }
 );
 
