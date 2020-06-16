@@ -108,7 +108,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item as='a'>Chef's Corner</Menu.Item>
                 <Menu.Item as='a'>Create a Recipe</Menu.Item>
-                <Search/>
+                {/* <SearchBar/> */}
                 <Menu.Item position='right'>
                   <Link to={"/login"}>
                     <Button  as='a' inverted={!fixed}>
