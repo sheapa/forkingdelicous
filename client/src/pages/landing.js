@@ -16,7 +16,7 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import "./index.css"
-// import SearchBar from '../components/Search'
+import Search from '../components/Search'
 
 
 // Heads up!
@@ -108,7 +108,7 @@ class DesktopContainer extends Component {
                 </Menu.Item>
                 <Menu.Item as='a'>Chef's Corner</Menu.Item>
                 <Menu.Item as='a'>Create a Recipe</Menu.Item>
-                {/* <SearchBar/> */}
+                <Search/>
                 <Menu.Item position='right'>
                   <Link to={"/login"}>
                     <Button  as='a' inverted={!fixed}>

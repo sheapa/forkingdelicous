@@ -55,7 +55,7 @@ class RecipeCreate extends Component {
   }
 
   render() {
-    const ingredientIds = this.state.ingredients.map((el) => el._id);
+    // const ingredientIds = this.state.ingredients.map((el) => el._id);
 
     return (
       <div style={{ display: "flex" }}>

@@ -1,8 +1,8 @@
 import React from 'react';
 import algoliasearch from "algoliasearch";
-// import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
+import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
 // import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy, connectStateResults} from "react-instantsearch-dom";
-import {InstantSearch, SearchBox, Hits, Index, connectStateResults} from "react-instantsearch-dom";
+// import {InstantSearch, SearchBox, Hits, Index, connectStateResults} from "react-instantsearch-dom";
 
 const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //this is my code
 
@@ -39,12 +39,18 @@ index
             console.log("Searchable Attributes ran")// done
         })
 
-        {/* <InstantSearch searchClient={searchClient} indexName="recipeDB">
+        function Search () {
+            return(
+
+        <InstantSearch searchClient={searchClient} indexName="recipeDB">
         <Header/>
         <div className="body-content">
             <Content/>
         </div>
-        </InstantSearch> */}
+        </InstantSearch> 
+            )
+
+        }
         
 // function Search () {            
 // return (
@@ -110,53 +116,53 @@ index
 // });
 
 
-// const Header = () =>(       
-// <header className='header'>
-// <SearchBox
-// className='search-bar'
-// translations={{placeholder:"Search for recipe"}}
-// />
-// </header>      
-// )
+const Header = () =>(       
+<header className='header'>
+<SearchBox
+className='search-bar'
+translations={{placeholder:"Search for recipe"}}
+/>
+</header>      
+)
 
                         
-// const Hit = ({hit}) => (
-// < a href={'/recipePage/'}> 
-// <div className='card'>
-// <div className='card-image'>
-//     <img src={hit.image} alt={hit.name} className="image"/>
-//     </div>
-//     <div className="card-contents">
-//         <Highlight attribute='title' hit={hit} className="card-title" />
-//         <Highlight attribute='description' hit={hit} className='card-description'/>
-//         <div className='card-likes'>Likes:{hit.likes}</div>
-//         <div className='card-likes'>Description:{hit.descritpion}</div>
-//         </div>
-//     </div>
-// </a>
-// );
-// const Content = () =>(
-// <main>
-//     <div className="information">
-//         <div className="stats">
-//             {""}
-//             <Stats/>{""}
-//         </div>
-//         <div className="">
-//             <SortBy defaultRefinement="recipeDB"
-//             items={[
-//                 {value:'recipeDB', label:'Most Relevant'},
-//             ]}
-//             />
-//         </div>
-//     </div>
-//     <Hits hitComponent={Hit}/>
-//     <div>
-//         {""}
-//         {/* <Pagination/> */}
-//     </div>
-// </main>
-// );
+const Hit = ({hit}) => (
+< a href={'/recipePage/'}> 
+<div className='card'>
+<div className='card-image'>
+    <img src={hit.image} alt={hit.name} className="image"/>
+    </div>
+    <div className="card-contents">
+        <Highlight attribute='title' hit={hit} className="card-title" />
+        <Highlight attribute='description' hit={hit} className='card-description'/>
+        <div className='card-likes'>Likes:{hit.likes}</div>
+        <div className='card-likes'>Description:{hit.descritpion}</div>
+        </div>
+    </div>
+</a>
+);
+const Content = () =>(
+<main>
+    <div className="information">
+        <div className="stats">
+            {""}
+            <Stats/>{""}
+        </div>
+        <div className="">
+            <SortBy defaultRefinement="recipeDB"
+            items={[
+                {value:'recipeDB', label:'Most Relevant'},
+            ]}
+            />
+        </div>
+    </div>
+    <Hits hitComponent={Hit}/>
+    <div>
+        {""}
+        <Pagination/>
+    </div>
+</main>
+);
 
 // const Results = connectStateResults(({ searchState }) =>
 //   searchState && searchState.query ? (
@@ -166,5 +172,5 @@ index
 //   )
 // );
 
-// export default Search;
+export default Search;
 
