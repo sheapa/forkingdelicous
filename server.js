@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const routes = require("./routes");
 const passport = require("./middlewares/passport");
+
+
 const PORT = process.env.PORT || 3001;
 
 // *** Disabled for now. Seeders were pushing to live db. ***
@@ -70,15 +72,3 @@ mongoose_db.on("error", function() {
   console.error("database failed to open");
 })
 
-
-// *** These may be useful later. Probably not... ***
-    // Define any API routes before this runs
-    // app.get("*", function(req, res) {
-    //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-    // });
-
-    // // Listen on assigned port.
-    // app.listen(PORT, function() {
-    //   console.log(`🌎 ==> API server now on port ${PORT}!`);
-    // });
-    
