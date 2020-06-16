@@ -32,7 +32,7 @@ const RecipeSchema = new Schema({
   
   image: {
     name: Schema.Types.String,
-  }
+  },
   
   pubDate: {
     type: Schema.Types.Date,

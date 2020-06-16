@@ -128,7 +128,7 @@ router.post(
   multer.recipeUpload.single("recipeImage"),
   (req, res, next) => {
     const file = req.file;
-    if (!files) {
+    if (!file) {
       const error = new Error("Please upload a file");
       error.httpStatusCode = 400;
       return next(error);

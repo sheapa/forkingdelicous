@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { Form, Input, Button} from 'semantic-ui-react'
-// import API from '../../utils/API'
+import SubmitButton from "../SubmitButton/index.js"
 
 
-function ImageSubmit (){
-    
-};
+
+// function ImageSubmit (){
+
+// };
 
 class ImageUploadForm extends Component {
     render () {
         return (
-            <Form action="/uploadRecipeImage" enctype="multipart/form-data" method="POST" id="recipeImageForm"> 
+            <Form action="/api/uploadRecipeImage" enctype="multipart/form-data" method="POST" id="recipeImageForm"> 
                 <Form.Field
                     control={Input}
                     label="Image Upload"
                     name="recipeImage"
                     type="file"
-                    value="Upload recipe images"
                 />
                 <Form.Field
                     control={SubmitButton}
