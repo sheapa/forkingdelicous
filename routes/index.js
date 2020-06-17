@@ -109,7 +109,7 @@ router.post("/api/login", (req, res) => {
 // Note that the name of the file field should be the same as the myFile argument passed to the upload.single function.
 router.post(
   "/api/uploadfile",
-  multer.avatarUpload.single("myImage"),
+  multer.avatarUpload.single("avatar"),
   (req, res, next) => {
     const file = req.file;
     if (!file) {

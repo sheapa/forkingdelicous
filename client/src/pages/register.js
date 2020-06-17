@@ -10,6 +10,8 @@ import {
     Segment,
   } from 'semantic-ui-react';
 import './index.css';
+import AvatarForm from "../components/AvatarForm";
+
 
 const Register = () => {
     const [userName, setuserName] = useState("");
@@ -86,6 +88,7 @@ const Register = () => {
                 sign me up!
               </Button>
             </Form>
+            <AvatarForm />
   
             <Message>
               already have an account?  <Link to={"/login"}>login</Link>
