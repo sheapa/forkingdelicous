@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import MyImage from '../../src/assets/images/orcishLibrarian.jpg';
 import {
   Button,
   Container,
@@ -32,45 +33,53 @@ const getWidth = () => {
  */
 const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
   <Container text style={{ background: '#36393e' }}>
-    <Grid columns={2} relaxed='very' stackable>
-      <Grid.Column>
-        <div>
-          <Image src='./assets/images/orcishLibrarian.jpg' size='medium' />
-        </div>
-      </Grid.Column>
-      <Grid.Column size='md-6'>
-        <Header
-          as='h1'
-          content='Forking Delicious'
-          inverted
-          style={{
-            fontSize: mobile ? '2em' : '4em',
-            fontWeight: 'normal',
-            marginBottom: 0,
-            marginTop: mobile ? '1.5em' : '3em',
-          }}
-        />
-        <Header
-          as='h2'
-          content='Find a Recipe / Make a Recipe / Share a Recipe'
-          inverted
-          style={{
-            color: '#f6f7f5',
-            background: '#36393e',
-            fontSize: mobile ? '1.5em' : '1.7em',
-            fontWeight: 'normal',
-            marginTop: mobile ? '0.5em' : '1.5em',
-          }}
-        />
-        <Button
-          style={{ backgroundColor: '#f6f7f5', color: '#5b5391' }}
-          size='huge'
-        >
-          Pick a Recipe
-          <Icon name='right arrow' style={{ color: '#5b5391' }} />
-        </Button>
-        {/* <SearchBar/> */}
-      </Grid.Column>
+    <Grid celled>
+      <Grid.Row>
+        <Grid.Column width={4}></Grid.Column>
+
+        <Grid.Column width={8}></Grid.Column>
+      </Grid.Row>
+    </Grid>
+    <Grid celled>
+      <Grid.Row>
+        <Grid.Column width={8}>
+          <Image src={MyImage} />
+        </Grid.Column>
+        <Grid.Column width={8}>
+          <Header
+            className='fixMe'
+            as='h1'
+            content='Forking Delicious'
+            inverted
+            // style={{
+            //   fontSize: mobile ? '2em' : '4em',
+            //   fontWeight: 'normal',
+            //   marginBottom: 0,
+            //   marginTop: mobile ? '.5em' : '1em',
+            // }}
+          />
+          <Header
+            as='h2'
+            content='Find a Recipe / Make a Recipe / Share a Recipe'
+            inverted
+            style={{
+              color: '#f6f7f5',
+              background: '#36393e',
+              fontSize: mobile ? '1.5em' : '1.7em',
+              fontWeight: 'normal',
+              marginTop: mobile ? '0.5em' : '1.5em',
+            }}
+          />
+          <Button
+            style={{ backgroundColor: '#f6f7f5', color: '#5b5391' }}
+            size='huge'
+          >
+            Pick a Recipe
+            <Icon name='right arrow' style={{ color: '#5b5391' }} />
+          </Button>
+          {/* <SearchBar/> */}
+        </Grid.Column>
+      </Grid.Row>
     </Grid>
   </Container>
 );
@@ -120,14 +129,20 @@ class DesktopContainer extends Component {
               // size='large'
             >
               <Container>
-                <Menu.Item as='a' active>
-                  Home
-                </Menu.Item>
-                <Menu.Item as='a'>Chef's Corner</Menu.Item>
-                <Menu.Item as='a'>Create a Recipe</Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed}>
-                    Log in
+                  <Button
+                    as='a'
+                    inverted={!fixed}
+                    style={{ marginLeft: '0.5em' }}
+                  >
+                    Chef's Page
+                  </Button>
+                  <Button
+                    as='a'
+                    inverted={!fixed}
+                    style={{ marginLeft: '0.5em' }}
+                  >
+                    Create a Recipe
                   </Button>
                   <Button
                     as='a'
@@ -138,8 +153,12 @@ class DesktopContainer extends Component {
                       color: '#f6f7f5',
                     }}
                   >
-                    Sign Up
+                    Log-in/Log-out
                   </Button>
+                  <Image
+                    src='https://live.staticflickr.com/65535/50014851021_3d53cbb8fa_n.jpg'
+                    avatar
+                  />
                 </Menu.Item>
               </Container>
             </Menu>

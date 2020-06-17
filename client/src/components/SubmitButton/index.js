@@ -4,9 +4,14 @@ import 'style.css';
 
 function SubmitButton() {
   return (
-    <div className='rightAlign'>
-      <Button value='submit' placeholder='Save' content='Save' />
-    </div>
+    <Container className='rightAlign'>
+      <Button
+        value='submit'
+        placeholder='Save'
+        content='Save'
+        style={{ marginLeft: '0.5em' }}
+      />
+    </Container>
   );
 }
 

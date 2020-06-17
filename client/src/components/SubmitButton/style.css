@@ -1,4 +1,6 @@
 .rightAlign {
-  display: flex;
-  justify-content: right;
+  margin-left: '0.5em';
+}
+
+.ui.button {
 }
