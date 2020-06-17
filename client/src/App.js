@@ -9,12 +9,19 @@ import Credits from './pages/credits';
 import RecipeCreate from './pages/recipeCreate';
 import RecipeDisplay from './pages/recipeDisplay';
 
-// const pageToShow = (pageName) => {
-  //   if (pageName === "Landing") return <Landing />;
-  // if (pageName === 'Register') return <Register />;
-  // if (pageName === 'Login') return <Login />;
-  //   if (pageName === "User") return <User />;
-// };
+// // Check for token
+// if (localStorage.jwtToken) {
+//   setAuthToken(localStorage.jwtToken);
+//   const decoded = jwt_decode(localStorage.jwtToken);
+//   store.dispatch(setCurrentUser(decoded));
+//   // check for expired token
+//   const currentTime = Date.now() / 1000;
+//   if (decoded.exp < currentTime) {
+//     store.dispatch(logoutUser());
+//     store.dispatch(clearCurrentProfile());
+//     window.location.href = "/login";
+//   }
+// }
 
 export const ConfigContext = React.createContext();
 
