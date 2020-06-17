@@ -1,6 +1,6 @@
 // import React from 'react'
 import React, {Component} from 'react'
-import { get } from 'axios';
+// import { get } from 'axios';
 import { Card, Icon, Image, Container, Menu } from 'semantic-ui-react'
 import MyImage from '../../Images/recipes/orcishLibrarian.jpg'
 
@@ -13,40 +13,39 @@ class RecipeCard extends Component{
       recipe: [],
     };
   
-    this.setPage = this.setPage.bind(this);
+    // this.setPage = this.setPage.bind(this);
   
   }
-  componentWillReceiveProps({ location = {} }) {
-    //the below path could be wrong??? may also need or be able to add '/recipeDisplay' to build for both starting page scenarios
-    if (location.pathname === '/recipeCreate' && location.pathname !== this.props.location.pathname) {
-      this.getRecipe();
-    }
-  }
+  // componentWillReceiveProps({ location = {} }) {
+  //   //the below path could be wrong??? may also need or be able to add '/recipeDisplay' to build for both starting page scenarios
+  //   if (location.pathname === '/recipeCreate' && location.pathname !== this.props.location.pathname) {
+  //     this.getRecipe();
+  //   }
+  // }
 
-  getUsers() {
-    get('/api/recipe')
-      .then(({ data }) => {
-        const { recipe } = data;
-    
+  // getRecipe() {
+  //   get('/api/recipe')
+  //     .then(({ data }) => {
+  //       // const { recipe } = this.state;
+  //       this.setState({
+  //         // recipe: data.recipe,
+  //         recipe: data,
+  //       });
+  //     });
+  // }
 
-        this.setState({
-          recipe: data.recipe,
-        });
-      });
-  }
-
-  setPage(page) {
-    return () => {
-      this.setState({ page });
-    };
-  }
-  componentDidMount() {
-    this.getRecipe();
-  }
+  // setPage(page) {
+  //   return () => {
+  //     this.setState({ page });
+  //   };
+  // }
+  // componentDidMount() {
+  //   this.getRecipe();
+  // }
   render (){
     const { recipe } = this.state;
     return(
-      <Menu small>
+      <Menu>
       <Container>
       <Card fluid>
         <Image src= {MyImage} wrapped ui={false}/>

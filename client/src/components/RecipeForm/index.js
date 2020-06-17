@@ -45,7 +45,7 @@ class RecipeForm extends Component {
     }).then(function (response) {
       console.log(response);
       // console.log(req.body);
-      // console.log(`recipe created with id: ${response.config.data._id}`);
+      console.log(`recipe created with id: ${response.config.data._id}`);
       // console.log(`recipe created with id: ${response.data.config.data}`);
       // console.log(`recipe created with id: ${response.data.config.data.title}`);
       // console.log(`recipe created with id: ${response._id}`);

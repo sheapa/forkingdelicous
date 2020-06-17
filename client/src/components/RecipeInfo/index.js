@@ -8,23 +8,35 @@ constructor(props) {
     super(props);
 
     //this code may also be wrong, not sure about the title part
-    this.state = { recipe: { title: '' } };
+    this.state = { 
+        recipe: {} 
+    };
     
     // state = {
     //     recipeData:{}
     // }
 }
 
+getData(){
+    axios.get(`/api/recipeDisplay/${params.recipeId}`)
+      .then(({ data: recipe }) => {
+        console.log('recipeDisplay' + recipe);
+        this.setState({ recipe });
+      });
+}
+
+componentDidUpdate(){
+
+
+}
+
+
 componentDidMount () {
+    console.log(this.props.match && this.props.match.params.param);
         const { match: { params } } = this.props;
 
         console.log("this is:" + params)
 
-        axios.get(`/api/recipeDisplay/${params.recipeId}`)
-          .then(({ data: recipe }) => {
-            console.log('recipeDisplay' + recipe);
-            this.setState({ recipe });
-          });
       };
 
       render (){
@@ -32,7 +44,7 @@ componentDidMount () {
           const {recipe} = this.state;
 
           return (
-            <RecipeCard {...recipe}/> //guesing on this one ...
+            <RecipeCard props={recipe}/> //guesing on this one ...
           );
     };
 }

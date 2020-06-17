@@ -4,36 +4,6 @@ const bcrypt = require("bcryptjs");
 const multer = require("../middlewares/multer/multerController");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
-<<<<<<< HEAD
-// const recipeController = require("../Deprecated/forkingController");
-
-// // router.route("/recipeCreate") this may not be the correct path???
-// router.route("/api/recipeCreate")
-// .post(recipeController.createRecipe)
-
-
-//IS IT A PROBLEM THAT THIS LINE EXIST HERE AND ON LINE129?
-module.exports = router;
-// *** TO DO add additional userdata to create & login request.
-
-// New User
-router.post("/api/create", (req, res) => {
-  const { username, password } = req.body;
-
-  db.User.create({ username: username, password: password }, function (
-    err,
-    user
-  ) {
-    if (err) {
-      console.error(err);
-      // (http) 409 Conflict Duplicate resource // (MongoDB) 11000 Wrong Syntax
-      if (err.name === "MongoError" || err.code === 11000) {
-        res.status(409).json({ err: "Username or Email already in use" });
-      } else {
-        // Not Found
-        res.status(404).json(err);
-      }
-=======
 const User = require("../models/user");
 // const {check, validationResult} = require("express-validator/check");
 
@@ -66,7 +36,6 @@ router.post("/api/register", (req, res) => {
     if (user) {
       errors.email = "Email already exists";
       return res.status(400).json(errors);
->>>>>>> 02065179304dccdb99d66753ebdb74771b0ba1a5
     } else {
       // *** Insert Multer here??? ***
       // const avatar = gravatar.url(req.body.email, { 
