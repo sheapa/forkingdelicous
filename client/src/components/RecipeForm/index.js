@@ -45,13 +45,13 @@ class RecipeForm extends Component {
     }).then(function (response) {
       console.log(response);
       // console.log(req.body);
+      console.log(`recipe created with id: ${response.data.config.data.title}`);
       console.log(`recipe created with id: ${response.config.data._id}`);
       // console.log(`recipe created with id: ${response.data.config.data}`);
-      // console.log(`recipe created with id: ${response.data.config.data.title}`);
       // console.log(`recipe created with id: ${response._id}`);
-      // console.log(`recipe created with id: ${response.ObjectId._id}`);
+      console.log(`recipe created with id: ${response.ObjectId._id}`);
       // console.log(`recipe created with id: ${recipeData._id}`);
-      // console.log(`recipe created with id: ${response.ObjectId}`);
+      console.log(`recipe created with id: ${response.ObjectId}`);
       // this.props.history.push(`/recipeDisplay/${response.config.data._id}`);
       // this.props.history.push(`/recipeDisplay/${response.config.data.title}`);
       // this.props.history.push(`/recipeDisplay/${response.data.config.data.title}`);

@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import RecipeInfo from '../components/RecipeInfo';
+import RecipeCard from '../components/RecipeCard';
 
 
 class RecipeDisplay extends Component {
     render(){
     return (
-<RecipeInfo/>
+<RecipeCard/>
 )
         }
 }

@@ -17,24 +17,37 @@ constructor(props) {
     // }
 }
 
-getData(){
-    axios.get(`/api/recipeDisplay/${params.recipeId}`)
-      .then(({ data: recipe }) => {
-        console.log('recipeDisplay' + recipe);
-        this.setState({ recipe });
-      });
-}
-
-componentDidUpdate(){
-
-
-}
-
-
+// getData(){
+//     axios.get(`/api/recipeDisplay/${params.recipeId}`)
+//       .then(({ data: recipe }) => {
+//         console.log('recipeDisplay' + recipe);
+//         this.setState({ recipe });
+//       });
+//     }
+    
+// componentDidUpdate(prevProps){
+//     if (this.props.recipeId !== prevProps.recipeId) {
+//         this.fetchData(this.props.recipeId);
+//         axios.get(`/api/recipeDisplay/${params.recipeId}`)
+//         .then(({ data: recipe }) => {
+//             console.log('recipeDisplay' + recipe);
+//             this.setState({ recipe });
+//         });
+//     }
+        
+        
+//     }
+    
+    
 componentDidMount () {
-    console.log(this.props.match && this.props.match.params.param);
+        // console.log(this.props.match && this.props.match.params.param);
         const { match: { params } } = this.props;
-
+        axios.get(`/api/recipeDisplay/${params.recipeId}`)
+        .then(({ data: recipe }) => {
+            console.log('recipeDisplay' + recipe);
+            this.setState({ recipe });
+        });
+        
         console.log("this is:" + params)
 
       };
