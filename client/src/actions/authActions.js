@@ -16,7 +16,7 @@
 //     );
 // };
 
-// // Login User
+// Login User
 // export const loginUser = (userData) => (dispatch) => {
 //   axios
 //     .post("/api/users/login", userData)

@@ -5,21 +5,21 @@ const multer = require("../middlewares/multer/multerController");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const User = require("../models/user");
-// const {check, validationResult} = require("express-validator/check");
+
 
 // Appears to fix this error. Requires more investigation
 // Server Error: (node:25824) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added to [Bus].
 require('events').EventEmitter.defaultMaxListeners = Infinity;
 
 // Login verification header for AXIOS Requests.
-const auth = require("../middlewares/authorization/auth.js");
+const auth = require("../middlewares/authorization/auth");
 
 // Input validation
 const validateRegisterInput = require("../middlewares/validation/register");
 const validateLoginInput = require("../middlewares/validation/login");
 
 // Test Route :)
-router.get("/test", (req, res) => res.json({ msg: "Users works" }));
+router.get("/test", auth, (req, res) => res.json({ msg: "Users works" }));
 
 // Registration API route. 
 router.post("/api/register", (req, res) => {
@@ -62,6 +62,8 @@ router.post("/api/register", (req, res) => {
     }
   });
 });
+
+
 
 // @route   POST api/users/login
 // @desc    Login user
@@ -155,7 +157,7 @@ router.post("/api/ingredients", (req, res) => {
   );
 });
 
-router.post("/api/recipeCreate", (req, res) => {
+router.post("/api/recipeCreate", auth, (req, res) => {
   const {
     title,
     description,

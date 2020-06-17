@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import setAuthToken from '../utils/setAuthToken';
 import {
   Button,
   Form,
@@ -9,11 +10,64 @@ import {
   Message,
   Segment,
 } from 'semantic-ui-react';
+import axios from "axios";
 import './index.css';
 
-const Login = () => {
-  const [username, setusername] = useState("");
+const Login = (props) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const userData = {
+      email: email,
+      password: password
+    }
+    // this.props.loginUser(user);
+    axios
+    .post("/api/login", userData)
+    .then((res) => {
+      // Save to local storage
+      const token = res.data.token;
+      localStorage.setItem("jwtToken", token);
+      setAuthToken(token);
+      props.setAuth("authorized");
+      props.history.push("/landing");
+      // Decode token to get user data
+      // const decoded = jwt_decode(token);
+      // dispatch(setCurrentUser(decoded));
+    })
+    .catch((err) =>
+      console.log(err)
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response.data,
+      // })
+    );
+  }
+
+//   // Login User
+// export const loginUser = (userData) => (dispatch) => {
+//   axios
+//     .post("/api/login", userData)
+//     .then((res) => {
+//       // Save to local storage
+//       const token = res.data.token;
+//       localStorage.setItem("jwtToken", token);
+//       setAuthToken(token);
+//       // Decode token to get user data
+//       // const decoded = jwt_decode(token);
+//       // dispatch(setCurrentUser(decoded));
+//     })
+//     .catch((err) =>
+//       console.log(err)
+//       // dispatch({
+//       //   type: GET_ERRORS,
+//       //   payload: err.response.data,
+//       // })
+//     );
+// };
+
 
 
   return  (
@@ -28,17 +82,17 @@ const Login = () => {
           Login for Forking Delicious Recipes
         </Header>
         <Segment stacked>
-          <Form action='/api/login' method='POST' size='large'>
+          <Form onSubmit={onSubmit.bind(this)} size='large'>
             <Form.Input
               fluid
               icon='user'
               iconPosition='left'
-              placeholder='username'
-              name='username'
+              placeholder='your email'
+              name='email'
               onChange={(e) => {
-                setusername(e.target.value);
+                setEmail(e.target.value);
               }}
-              value={username}
+              value={email}
               autoComplete='off'
             />
             <Form.Input
