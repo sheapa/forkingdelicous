@@ -183,50 +183,26 @@ router.post("/api/ingredients", (req, res) => {
   );
 });
 
-router.post("/api/recipeCreate", (req, res) => {
-  const {
-    title,
-    description,
-    ingredients,
-    instruction,
-    tips,
-    yeild,
-    categories,
-    activeTime,
-    inActiveTime,
-    addons,
-    forkedFrom,
-    images,
-    pubDate,
-    author,
-  } = req.body;
 
-  db.Recipe.create(
-    {
-      title: title,
-      description: description,
-      ingredients: ingredients,
-      instruction: instruction,
-      tips: tips,
-      yeild: yeild,
-      categories: categories,
-      feedback: "",
-      activeTime: activeTime,
-      inActiveTime: inActiveTime,
-      addons: addons,
-      forkedFrom: forkedFrom,
-      images: images,
-      pubDate: pubDate,
-      likes: 0,
-      saves: 0,
-      forks: 0,
-      author: author,
-    },
+router.post("/api/recipeCreate", (req, res) => {
+ // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
+  db.Recipe.create(req.body,
     function (response) {
-      res.send(response);
+      // res.send(response); WHY is this SEND?
+      res.json(response)
     }
   );
 });
+
+router.get("/api/recipe", (req, res) => {
+ // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
+ db.Recipe.findById(req.params.id)
+ .then(queryResponse => res.json(queryResponse))
+ .catch(err => res.status(422).json(err));
+});
+
+  
+//DO WE NEED A router.get("/api/recipeCreate")........?
 
 // API Routes
 // router.use("/api", apiRoutes);
