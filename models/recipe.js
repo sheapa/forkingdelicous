@@ -39,11 +39,11 @@ const RecipeSchema = new Schema({
     default: Date.now,
   },
   
-  likes: {type: Schema.Types.Number, algoliaIndex: true},
+  likes: {type: Schema.Types.Number, default:0, algoliaIndex: true},
   
-  saves: {type: Schema.Types.Number, algoliaIndex: true},
+  saves: {type: Schema.Types.Number, default:0, algoliaIndex: true},
   
-  forks: {type: Schema.Types.Number, algoliaIndex: true},
+  forks: {type: Schema.Types.Number, default:0, algoliaIndex: true},
   
   author: { type: Schema.Types.ObjectId, ref: "User", algoliaIndex: true },
 });

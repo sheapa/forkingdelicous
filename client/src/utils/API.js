@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-findByRecipeId: function(id){
-    return axios.get("/api/recipe" + id)
+findByRecipeId: function(_id){
+    return axios.get("/api/recipe" + _id)
 },
 
 saveRecipe: function(recipeData){

@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken");
 const db = require("../models");
 const User = require("../models/user");
 
+const AvatarImage = require("../models/avatar");
+const RecipeImage = require("../models/recipeImage");
 
 // Appears to fix this error. Requires more investigation
 // Server Error: (node:25824) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added to [Bus].
@@ -111,14 +113,28 @@ router.post("/api/login", (req, res) => {
 // Note that the name of the file field should be the same as the myFile argument passed to the upload.single function.
 router.post(
   "/api/uploadfile",
-  multer.avatarUpload.single("myImage"),
+  multer.avatarUpload.single("avatar"),
   (req, res, next) => {
+    console.log(req.body);
     const file = req.file;
+
     if (!file) {
       const error = new Error("Please upload a file");
       error.httpStatusCode = 400;
       return next(error);
     }
+    AvatarImage.create(
+      {
+      imageName: req.body.imageName,
+      imageData: req.file.path
+      }
+    ).then((result) => {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        document: result
+      });
+    })
     res.send(file);
   }
 );
@@ -135,6 +151,18 @@ router.post(
       error.httpStatusCode = 400;
       return next(error);
     }
+    RecipeImage.create(
+      {
+      imageName: req.body.imageName,
+      imageData: req.file.path
+      }
+    ).then((result) => {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        document: result
+      });
+    })
     res.send(file);
   }
 );
@@ -156,51 +184,69 @@ router.post("/api/ingredients", (req, res) => {
     }
   );
 });
+// ***************************************** I'm not exactly sure what to do about this conflict. I commented everything to be resolved later. 
+// <<<<<<< jwt-patrick
+// router.post("/api/recipeCreate", auth, (req, res) => {
+//   const {
+//     title,
+//     description,
+//     ingredients,
+//     instruction,
+//     tips,
+//     yeild,
+//     categories,
+//     activeTime,
+//     inActiveTime,
+//     addons,
+//     forkedFrom,
+//     images,
+//     pubDate,
+//     author,
+//   } = req.body;
 
-router.post("/api/recipeCreate", auth, (req, res) => {
-  const {
-    title,
-    description,
-    ingredients,
-    instruction,
-    tips,
-    yeild,
-    categories,
-    activeTime,
-    inActiveTime,
-    addons,
-    forkedFrom,
-    images,
-    pubDate,
-    author,
-  } = req.body;
+//   db.Recipe.create(
+//     {
+//       title: title,
+//       description: description,
+//       ingredients: ingredients,
+//       instruction: instruction,
+//       tips: tips,
+//       yeild: yeild,
+//       categories: categories,
+//       feedback: "",
+//       activeTime: activeTime,
+//       inActiveTime: inActiveTime,
+//       addons: addons,
+//       forkedFrom: forkedFrom,
+//       images: images,
+//       pubDate: pubDate,
+//       likes: 0,
+//       saves: 0,
+//       forks: 0,
+//       author: author,
+//     },
+// =======
 
-  db.Recipe.create(
-    {
-      title: title,
-      description: description,
-      ingredients: ingredients,
-      instruction: instruction,
-      tips: tips,
-      yeild: yeild,
-      categories: categories,
-      feedback: "",
-      activeTime: activeTime,
-      inActiveTime: inActiveTime,
-      addons: addons,
-      forkedFrom: forkedFrom,
-      images: images,
-      pubDate: pubDate,
-      likes: 0,
-      saves: 0,
-      forks: 0,
-      author: author,
-    },
-    function (response) {
-      res.send(response);
-    }
-  );
+// router.post("/api/recipeCreate", (req, res) => {
+//  // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
+//   db.Recipe.create(req.body,
+// >>>>>>> master
+//     function (response) {
+//       // res.send(response); WHY is this SEND?
+//       res.json(response)
+//     }
+//   );
+// });
+
+router.get("/api/recipe", (req, res) => {
+ // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
+ db.Recipe.findById(req.params.id)
+ .then(queryResponse => res.json(queryResponse))
+ .catch(err => res.status(422).json(err));
 });
+
+  
+//DO WE NEED A router.get("/api/recipeCreate")........?
 
 // API Routes
 // router.use("/api", apiRoutes);

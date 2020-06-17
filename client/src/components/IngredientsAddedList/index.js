@@ -5,7 +5,9 @@ class IngredientsAddedList extends React.Component {
   constructor(props) {
     super(props);
   }
-
+// this.state ={
+//   ingredients: {}
+// }
   render() {
     console.log("ingredientsAddedList rendered");
     console.log(

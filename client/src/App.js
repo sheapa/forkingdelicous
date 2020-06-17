@@ -15,10 +15,6 @@ import PrivateRoute from './common/private'
 
 export const authContext = React.createContext();
 
-// const configValue = {
-  
-//   isLoggedIn: false,
-// };
 
 const App = () => {
   const [auth, setAuth] = useState("unauthorized");
@@ -46,7 +42,9 @@ const App = () => {
           <Login {...props} setAuth={setAuth} /> 
         )}/>
         <Route exact path='/register' component={Register} />
-        <Route exact path='/recipeDisplay' component={RecipeDisplay} />
+        {/* code below may need to be directed to RecipeInfo component??? */}
+        <Route exact path='/recipeDisplay/:recipeId' component={RecipeDisplay} /> 
+        <Route exact path='/recipeDisplay/' component={RecipeDisplay} /> 
         <Route exact path='/recipeCreate' component={RecipeCreate} />
         <Route exact path='/user' component={User} />
         <Route exact path='/credits' component={Credits} />
