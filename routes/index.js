@@ -5,23 +5,23 @@ const multer = require("../middlewares/multer/multerController");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const User = require("../models/user");
+
 const AvatarImage = require("../models/avatar");
 const RecipeImage = require("../models/recipeImage");
-// const {check, validationResult} = require("express-validator/check");
 
 // Appears to fix this error. Requires more investigation
 // Server Error: (node:25824) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added to [Bus].
 require('events').EventEmitter.defaultMaxListeners = Infinity;
 
 // Login verification header for AXIOS Requests.
-const auth = require("../middlewares/authorization/auth.js");
+const auth = require("../middlewares/authorization/auth");
 
 // Input validation
 const validateRegisterInput = require("../middlewares/validation/register");
 const validateLoginInput = require("../middlewares/validation/login");
 
 // Test Route :)
-router.get("/test", (req, res) => res.json({ msg: "Users works" }));
+router.get("/test", auth, (req, res) => res.json({ msg: "Users works" }));
 
 // Registration API route. 
 router.post("/api/register", (req, res) => {
@@ -64,6 +64,8 @@ router.post("/api/register", (req, res) => {
     }
   });
 });
+
+
 
 // @route   POST api/users/login
 // @desc    Login user
@@ -182,17 +184,59 @@ router.post("/api/ingredients", (req, res) => {
     }
   );
 });
+// ***************************************** I'm not exactly sure what to do about this conflict. I commented everything to be resolved later. 
+// <<<<<<< jwt-patrick
+// router.post("/api/recipeCreate", auth, (req, res) => {
+//   const {
+//     title,
+//     description,
+//     ingredients,
+//     instruction,
+//     tips,
+//     yeild,
+//     categories,
+//     activeTime,
+//     inActiveTime,
+//     addons,
+//     forkedFrom,
+//     images,
+//     pubDate,
+//     author,
+//   } = req.body;
 
+//   db.Recipe.create(
+//     {
+//       title: title,
+//       description: description,
+//       ingredients: ingredients,
+//       instruction: instruction,
+//       tips: tips,
+//       yeild: yeild,
+//       categories: categories,
+//       feedback: "",
+//       activeTime: activeTime,
+//       inActiveTime: inActiveTime,
+//       addons: addons,
+//       forkedFrom: forkedFrom,
+//       images: images,
+//       pubDate: pubDate,
+//       likes: 0,
+//       saves: 0,
+//       forks: 0,
+//       author: author,
+//     },
+// =======
 
-router.post("/api/recipeCreate", (req, res) => {
- // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
-  db.Recipe.create(req.body,
-    function (response) {
-      // res.send(response); WHY is this SEND?
-      res.json(response)
-    }
-  );
-});
+// router.post("/api/recipeCreate", (req, res) => {
+//  // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
+//   db.Recipe.create(req.body,
+// >>>>>>> master
+//     function (response) {
+//       // res.send(response); WHY is this SEND?
+//       res.json(response)
+//     }
+//   );
+// });
 
 router.get("/api/recipe", (req, res) => {
  // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
