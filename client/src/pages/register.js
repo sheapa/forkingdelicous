@@ -12,8 +12,10 @@ import {
 import './index.css';
 
 const Register = () => {
-    const [username, setusername] = useState("");
+    const [userName, setuserName] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
   
   
     return  (
@@ -28,17 +30,29 @@ const Register = () => {
             Login for Forking Delicious Recipes
           </Header>
           <Segment stacked>
-            <Form action='/api/create' method='POST' size='large'>
+            <Form action='/api/register' method='POST' size='large'>
               <Form.Input
                 fluid
                 icon='user'
                 iconPosition='left'
-                placeholder='username'
-                name='username'
+                placeholder='create a user name.'
+                name='userName'
                 onChange={(e) => {
-                  setusername(e.target.value);
+                  setuserName(e.target.value);
                 }}
-                value={username}
+                value={userName}
+                autoComplete='off'
+              />
+              <Form.Input
+                fluid
+                icon='user'
+                iconPosition='left'
+                placeholder='your email'
+                name='email'
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                value={email}
                 autoComplete='off'
               />
               <Form.Input
@@ -46,23 +60,35 @@ const Register = () => {
                 icon='lock'
                 iconPosition='left'
                 onChange={(e) => {
-                  console.log('space for password');
                   setPassword(e.target.value);
                 }}
                   value={password}
                 type='password'
                 name='password'
-                placeholder='Password'
+                placeholder='password'
+                autoComplete='off'
+              />
+              <Form.Input
+                fluid
+                icon='lock'
+                iconPosition='left'
+                onChange={(e) => {
+                  setPassword2(e.target.value);
+                }}
+                  value={password2}
+                type='password'
+                name='password2'
+                placeholder='verify password'
                 autoComplete='off'
               />
   
               <Button color='#36393e' value='submit' fluid size='large'>
-                Log Me In
+                sign me up!
               </Button>
             </Form>
   
             <Message>
-              Already have an account?  <Link to={"/login"}>Login</Link>
+              already have an account?  <Link to={"/login"}>login</Link>
             </Message>
           </Segment>
         </Grid.Column>
