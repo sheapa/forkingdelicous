@@ -97,10 +97,10 @@ class RecipeCard extends Component{
          </Card.Content>
         <Card.Description>'A satisfying snack for your body and mind.'</Card.Description>
         <Card.Content extra>
-        <a>
+        {/* <a> */}
         <Icon name='user' />
         16 {recipe.likes}
-      </a>
+      {/* </a> */}
             </Card.Content> 
       </Card>
       </Container>

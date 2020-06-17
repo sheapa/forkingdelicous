@@ -1,5 +1,5 @@
 import React, {useContext } from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { authContext } from "../App";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {

@@ -281,7 +281,7 @@ const Landing = () => (
           horizontal
           style={{ margin: '3em 0em', textTransform: 'uppercase' }}
         >
-          <a href='#'>Extra Extra</a>
+          {/* <a href='#'>Extra Extra</a> */}
         </Divider>
 
         <Header as='h3' style={{ fontSize: '2em' }}>

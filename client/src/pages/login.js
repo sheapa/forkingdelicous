@@ -46,29 +46,6 @@ const Login = (props) => {
     );
   }
 
-//   // Login User
-// export const loginUser = (userData) => (dispatch) => {
-//   axios
-//     .post("/api/login", userData)
-//     .then((res) => {
-//       // Save to local storage
-//       const token = res.data.token;
-//       localStorage.setItem("jwtToken", token);
-//       setAuthToken(token);
-//       // Decode token to get user data
-//       // const decoded = jwt_decode(token);
-//       // dispatch(setCurrentUser(decoded));
-//     })
-//     .catch((err) =>
-//       console.log(err)
-//       // dispatch({
-//       //   type: GET_ERRORS,
-//       //   payload: err.response.data,
-//       // })
-//     );
-// };
-
-
 
   return  (
 
