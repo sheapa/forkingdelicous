@@ -34,10 +34,10 @@ const getWidth = () => {
 const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
   <Container text style={{ background: '#36393e' }}>
     <Grid celled>
-      <Grid.Row>
-        <Grid.Column width={4}></Grid.Column>
+      <Grid.Row className='gridRowHome'>
+        <Grid.Column width={5}></Grid.Column>
 
-        <Grid.Column width={8}></Grid.Column>
+        <Grid.Column width={11}></Grid.Column>
       </Grid.Row>
     </Grid>
     <Grid celled>
