@@ -5,6 +5,8 @@ const multer = require("../middlewares/multer/multerController");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const User = require("../models/user");
+const AvatarImage = require("../models/avatar");
+const RecipeImage = require("../models/recipeImage");
 // const {check, validationResult} = require("express-validator/check");
 
 // Appears to fix this error. Requires more investigation
@@ -111,12 +113,26 @@ router.post(
   "/api/uploadfile",
   multer.avatarUpload.single("avatar"),
   (req, res, next) => {
+    console.log(req.body);
     const file = req.file;
+
     if (!file) {
       const error = new Error("Please upload a file");
       error.httpStatusCode = 400;
       return next(error);
     }
+    AvatarImage.create(
+      {
+      imageName: req.body.imageName,
+      imageData: req.file.path
+      }
+    ).then((result) => {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        document: result
+      });
+    })
     res.send(file);
   }
 );
@@ -133,6 +149,18 @@ router.post(
       error.httpStatusCode = 400;
       return next(error);
     }
+    RecipeImage.create(
+      {
+      imageName: req.body.imageName,
+      imageData: req.file.path
+      }
+    ).then((result) => {
+      console.log(result);
+      res.status(200).json({
+        success: true,
+        document: result
+      });
+    })
     res.send(file);
   }
 );

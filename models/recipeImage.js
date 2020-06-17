@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const AvatarSchema = new Schema({ 
+const RecipeImageSchema = new Schema({ 
     imageName: {
         type: String,
         default: "none",
@@ -14,6 +14,6 @@ const AvatarSchema = new Schema({
     },
 });
 
-const AvatarImage = mongoose.model("AvatarImage", AvatarSchema);
+const RecipeImage = mongoose.model("RecipeImage", RecipeImageSchema);
 
-module.exports = AvatarImage;
+module.exports = RecipeImage;

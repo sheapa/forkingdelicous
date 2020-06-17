@@ -28,6 +28,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Currently serving static assets
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/Images", express.static("Images"))
 
 // Define middlewares here for parsing req.body:
 app.use(bodyParser.urlencoded({ extended: false }));
