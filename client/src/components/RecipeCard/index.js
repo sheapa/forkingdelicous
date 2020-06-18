@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import { get } from 'axios';
 import { Card, Icon, Image, Container, Menu } from 'semantic-ui-react';
+import { withRouter } from "react-router";
 import MyImage from '../../Images/recipes/orcishLibrarian.jpg';
 
 class RecipeCard extends Component {
   constructor(props) {
     super(props);
-
+this.props = props
     this.state = {
       recipe: [],
     };
@@ -44,9 +45,7 @@ class RecipeCard extends Component {
 
   componentDidMount() {
     // console.log(this.props.match && this.props.match.params.param);
-    const {
-      match: { params },
-    } = this.props;
+    const { match: { params }, } = this.props;
     axios
       .get(`/api/recipeDisplay/${params.algoliaObjectId}`)
       .then(({ data: recipe }) => {
@@ -59,6 +58,7 @@ class RecipeCard extends Component {
 
   render() {
     const { recipe } = this.state;
+    console.log(recipe)
     return (
       <Menu>
         <Container>
@@ -95,7 +95,10 @@ class RecipeCard extends Component {
     );
   }
 }
-export default RecipeCard;
+// export default RecipeCard;
+export default withRouter(RecipeCard);
+
+
 // const RecipeCard = ({
 //   title,
 //   ingredients,
@@ -176,4 +179,5 @@ export default RecipeCard;
 // </Menu>
 // )
 
+// export default RecipeCard;
 // export default RecipeCard;

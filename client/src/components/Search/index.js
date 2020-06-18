@@ -1,8 +1,10 @@
 import React from 'react';
 import algoliasearch from "algoliasearch";
-import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
+import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy} from "react-instantsearch-dom";
+// import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy,Pagination} from "react-instantsearch-dom";
 // import {InstantSearch, SearchBox, Hits, Highlight,Stats,SortBy, connectStateResults} from "react-instantsearch-dom";
 // import {InstantSearch, SearchBox, Hits, Index, connectStateResults} from "react-instantsearch-dom";
+import "./search.css"
 
 const searchClient = algoliasearch("ZCHNRWDF6B","af3f80f79bfd2b7d0e7832aba6f0a582") //change to search only?
 
@@ -160,7 +162,7 @@ const Content = () =>(
     <Hits hitComponent={Hit}/>
     <div>
         {""}
-        <Pagination/>
+        {/* <Pagination/> */}
     </div>
 </main>
 );

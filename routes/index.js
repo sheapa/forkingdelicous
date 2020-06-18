@@ -198,7 +198,7 @@ router.post("/api/recipeCreate", (req, res) => {
 
 
 router.get("/api/recipeDisplay/:algoliaObjectId", (req, res) => {
-console.log(req.params)
+// console.log(req.params)
 Recipe.findOne({_algoliaObjectID: req.params.algoliaObjectId})
 .then(response => {
   res.json(response)
