@@ -1,18 +1,16 @@
-import React, { Component } from "react";
-import { Form, Input, Button } from "semantic-ui-react";
-import API from "../../utils/API";
-
+import React, { Component } from 'react';
+import { Form, Input, Button } from 'semantic-ui-react';
+import API from '../../utils/API';
 
 function SubmitButton() {
-  return <Button value="submit" placeholder="Save" content="Save" />;
+  return <Button value='submit' placeholder='Save' content='Save' />;
 }
-
 
 class IngredientForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: '',
       unit: 0,
       quantity: 0,
     };
@@ -72,36 +70,36 @@ class IngredientForm extends Component {
       //   />
       //   <input type="submit" placeholder="Submit" />
       // </form>
-      <div style={{ minWidth: "700px" }}>
+      <div style={{ minWidth: '700px' }}>
         <Form
-          action="/api/ingredients"
-          method="POST"
-          id="IngredientForm"
+          action='/api/ingredients'
+          method='POST'
+          id='IngredientForm'
           onSubmit={this.handleIngredientCreate}
         >
           <Form.Field
             control={Input}
-            label="Ingredient name"
-            name="name"
-            placeholder="Ingredient"
+            label='Ingredient name'
+            name='name'
+            placeholder='Ingredient'
             width={12}
             onChange={this.handleInputChange}
             value={this.state.name}
           />
           <Form.Field
             control={Input}
-            label="Ingredient unit"
-            name="unit"
-            placeholder="Ingredient"
+            label='Ingredient unit'
+            name='unit'
+            placeholder='Ingredient'
             width={12}
             onChange={this.handleInputChange}
             value={this.state.unit}
           />
           <Form.Field
             control={Input}
-            label="Ingredient quantity"
-            name="quantity"
-            placeholder="Ingredient"
+            label='Ingredient quantity'
+            name='quantity'
+            placeholder='Ingredient'
             width={12}
             onChange={this.handleInputChange}
             value={this.state.quantity}

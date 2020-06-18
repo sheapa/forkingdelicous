@@ -1,24 +1,23 @@
-
-import React, { Component } from "react";
-import RecipeForm from "../components/RecipeForm";
+import React, { Component } from 'react';
+import RecipeForm from '../components/RecipeForm';
 // import API from '../utils/API'
-import IngredientForm from "../components/IngredientForm";
-import IngredientsAddedList from "../components/IngredientsAddedList";
-import ImageUploadForm from "../components/ImageUploadForm";
+import IngredientForm from '../components/IngredientForm';
+import IngredientsAddedList from '../components/IngredientsAddedList';
+import ImageUploadForm from '../components/ImageUploadForm';
 
 class RecipeCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
       recipe: [],
-      q: "",
-      message: "Create a recipe",
-      title: "",
-      description: "",
+      q: '',
+      message: 'Create a recipe',
+      title: '',
+      description: '',
       instruction: [],
       ingredients: [],
-      tips: "",
-      yeild: "",
+      tips: '',
+      yeild: '',
       categories: [],
       feedback: [],
       activeTime: 0,
@@ -59,7 +58,7 @@ class RecipeCreate extends Component {
     // const ingredientIds = this.state.ingredients.map((el) => el._id);
 
     return (
-      <div style={{ display: "flex" }}>
+      <div style={{ display: 'flex' }}>
         <div>
           <IngredientForm q={this.state.q} addIngredient={this.addIngredient} />
           <ImageUploadForm q={this.state.q} />
