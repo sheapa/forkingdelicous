@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import MyImage from '../../src/assets/images/orcishLibrarian.jpg';
+import Pancakes from '../../src/assets/images/pancakes.jpg';
+import Kitchen from '../../src/assets/images/inKitchen.jpg';
 import {
   Button,
   Container,
@@ -33,19 +35,22 @@ const getWidth = () => {
  */
 const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
   <Container text style={{ background: '#36393e' }}>
-    <Grid celled>
+    <Grid celled stackable>
       <Grid.Row className='gridRowHome'>
-        <Grid.Column width={5}></Grid.Column>
+        <Grid.Column width={7}>{/* <Image src={Kitchen} /> */}</Grid.Column>
 
-        <Grid.Column width={11}></Grid.Column>
+        <Grid.Column width={9}>
+          <Image src={Pancakes} centered />
+        </Grid.Column>
       </Grid.Row>
     </Grid>
-    <Grid celled>
+    <Grid celled stackable>
       <Grid.Row>
-        <Grid.Column width={8}>
-          <Image src={MyImage} />
+        <Grid.Column width={5}>
+          Share a Love of Cooking
+          <Image src={Kitchen} />
         </Grid.Column>
-        <Grid.Column width={8}>
+        <Grid.Column width={11}>
           <Header
             className='fixMe'
             as='h1'
@@ -68,10 +73,11 @@ const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
               fontSize: mobile ? '1.5em' : '1.7em',
               fontWeight: 'normal',
               marginTop: mobile ? '0.5em' : '1.5em',
+              marginBottom: mobile ? '0.5em' : '1.5em',
             }}
           />
           <Button
-            style={{ backgroundColor: '#f6f7f5', color: '#5b5391' }}
+            style={{ backgroundColor: '#f6f7f5', color: '#090420' }}
             size='huge'
           >
             Pick a Recipe
