@@ -17,6 +17,7 @@ import {
 } from 'semantic-ui-react';
 import './index.css';
 import Search from '../components/Search';
+import Pancakes from '../assets/pancakes.jpg';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -46,7 +47,7 @@ const HomepageHeading = ({ mobile } /*mobile  HOMEPAGE*/) => (
       <Grid.Row>
         <Grid.Column width={5}>
           Share a Love of Cooking
-          <Image src={Kitchen} />
+          {/* <Image src={Kitchen} /> */}
         </Grid.Column>
         <Grid.Column width={11}>
           <Header

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'semantic-ui-react';
-import 'style.css';
+import { Button, Container } from 'semantic-ui-react';
+import './style.css';
 
 function SubmitButton() {
   return (
