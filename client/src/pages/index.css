@@ -17,5 +17,16 @@ code {
 }
 
 button {
-  background-color: blueviolet !important;
+  background-color: rgba(137, 43, 226, 0.651) !important;
+}
+
+.fixMe {
+  font-size: '4em';
+  font-weight: 'normal';
+  margin-bottom: 0;
+  margin-top: '1.5em';
+}
+
+.gridRowHome {
+  min-height: 200px;
 }
