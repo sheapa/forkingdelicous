@@ -5,7 +5,6 @@ const mongoolia = require('mongoolia').default;
 const Schema = mongoose.Schema;
 
 const RecipeSchema = new Schema({
-  
   title: {type: Schema.Types.String, algoliaIndex: true},
   
   description: {type: Schema.Types.String, algoliaIndex: true},

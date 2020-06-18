@@ -42,20 +42,35 @@ class RecipeForm extends Component {
       saves: recipe.saves,
       forks: recipe.forks,
       // author: recipe.author,
-    }).then(function (response) {
-      console.log(response);
-      // console.log(req.body);
-      console.log(`recipe created with id: ${response.data.config.data.title}`);
-      console.log(`recipe created with id: ${response.config.data._id}`);
-      // console.log(`recipe created with id: ${response.data.config.data}`);
-      // console.log(`recipe created with id: ${response._id}`);
-      console.log(`recipe created with id: ${response.ObjectId._id}`);
-      // console.log(`recipe created with id: ${recipeData._id}`);
-      console.log(`recipe created with id: ${response.ObjectId}`);
-      // this.props.history.push(`/recipeDisplay/${response.config.data._id}`);
-      // this.props.history.push(`/recipeDisplay/${response.config.data.title}`);
+    }).then((recipe) => {
+API.findByRecipeId({
+  title: recipe.title,
+  description: recipe.description,
+  instruction: recipe.instruction,
+  ingredients: this.props.ingredients,
+  tips: recipe.tips,
+  yeild: recipe.yeild,
+  categories: recipe.categories,
+  feedback: recipe.feedback,
+  activeTime: recipe.activeTime,
+  inActiveTime: recipe.inActiveTime,
+  // addons: recipe.addons,
+  // forkedFrom: recipe.forkedFrom,
+  images: recipe.images,
+  pubDate: recipe.pubDate,
+  likes: recipe.likes,
+  saves: recipe.saves,
+  forks: recipe.forks,
+  // author: recipe.author,
+})
+      // res.json(response)
+      // console.log("this was executed")
       // this.props.history.push(`/recipeDisplay/${response.data.config.data.title}`);
-    });
+    }).then(response =>{
+      console.log(response);
+    }
+
+    );
   };
 
   render() {

@@ -86,7 +86,6 @@ const Login = (props) => {
               placeholder='Password'
               autoComplete='off'
             />
-
             <Button color='#36393e' value='submit' fluid size='large'>
               Log Me In
             </Button>

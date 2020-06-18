@@ -127,7 +127,7 @@ translations={{placeholder:"Search for recipe"}}
 
                         
 const Hit = ({hit}) => (
-< a href={'/recipeDisplay/:recipeId'}> 
+< a href={'/recipeDisplay/:algoliaObjectId'}> 
 <div className='card'>
 <div className='card-image'>
     <img src={hit.image} alt={hit.name} className="image"/>

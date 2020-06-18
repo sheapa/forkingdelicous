@@ -47,7 +47,7 @@ const App = () => {
           <Login {...props} setAuth={setAuth} /> 
           )}/>
         {/* code below may need to be directed to RecipeInfo component??? */}
-        <PrivateRoute exact path='/recipeDisplay/:recipeId' component={RecipeDisplay} /> 
+        <PrivateRoute exact path='/recipeDisplay/:algoliaObjectId' component={RecipeDisplay} /> 
         <PrivateRoute exact path='/landing' component={Landing} />
         <PrivateRoute exact path='/recipeDisplay/' component={RecipeDisplay} /> 
         <PrivateRoute exact path='/recipeCreate' component={RecipeCreate} />

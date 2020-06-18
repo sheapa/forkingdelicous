@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import RecipeCard from "../RecipeCard"
-
+// import API from "../../utils/API";
 
 class RecipeInfo extends Component {
 constructor(props) {
@@ -24,6 +24,13 @@ constructor(props) {
 //         this.setState({ recipe });
 //       });
 //     }
+// getData(){
+//     axios.get(`/api/recipeDisplay/${params.recipeId}`)
+//       .then(({ data: recipe }) => {
+//         console.log('recipeDisplay' + recipe);
+//         this.setState({ recipe });
+//       });
+//     }
     
 // componentDidUpdate(prevProps){
 //     if (this.props.recipeId !== prevProps.recipeId) {
@@ -39,18 +46,17 @@ constructor(props) {
 //     }
     
     
-componentDidMount () {
-        // console.log(this.props.match && this.props.match.params.param);
-        const { match: { params } } = this.props;
-        axios.get(`/api/recipeDisplay/${params.recipeId}`)
-        .then(({ data: recipe }) => {
-            console.log('recipeDisplay' + recipe);
-            this.setState({ recipe });
-        });
+// componentDidMount () {
+//         console.log(this.props.match && this.props.match.params.param);
+//         axios.get(`/api/recipeDisplay/${req.params.algoliaObjectId}`)
+//         .then(({ data: recipe }) => {
+//             console.log(data: recipe);
+//             this.setState({ recipe });
+//         });
         
-        console.log("this is:" + params)
+//         console.log("this is:" + params)
 
-      };
+//       };
 
       render (){
           //may not need this ????
