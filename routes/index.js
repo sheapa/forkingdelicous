@@ -197,16 +197,8 @@ router.post("/api/recipeCreate", (req, res) => {
 });
 
 
-// router.get("/api/recipeDisplay/:recipeId", (req, res) => {
-//  // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
-//  console.log(req.params)
-//  Recipe.findById(req.params.id)
-//  .then(response => res.json(response))
-//  .catch(err => res.status(422).json(err));
-// });
-
 router.get("/api/recipeDisplay/:algoliaObjectId", (req, res) => {
-console.log(req.params)
+// console.log(req.params)
 Recipe.findOne({_algoliaObjectID: req.params.algoliaObjectId})
 .then(response => {
   res.json(response)

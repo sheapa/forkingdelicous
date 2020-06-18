@@ -5,7 +5,7 @@ export default {
 //     return axios.get("/api/recipe" + _id)
 // },
 findByRecipeId: function(_algoliaObjectId){
-    return axios.get("/api/recipeDisplay/" + _algoliaObjectId)
+    return axios.get("/api/recipeDisplay", {params: _algoliaObjectId})
 },
 
 saveRecipe: function(recipeData){
