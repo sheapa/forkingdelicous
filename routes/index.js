@@ -5,7 +5,7 @@ const multer = require("../middlewares/multer/multerController");
 const jwt = require("jsonwebtoken");
 const db = require("../models");
 const User = require("../models/user");
-
+const Recipe = require('../models/recipe');
 const AvatarImage = require("../models/avatar");
 const RecipeImage = require("../models/recipeImage");
 
@@ -85,6 +85,7 @@ router.post("/api/login", (req, res) => {
   // find user by email
   User.findOne({ email }).then((user) => {
     // check for user
+    console.log(user)
     if (!user) {
       errors.email = "Invalid Credentials";
       res.status(404).json(errors);
@@ -184,66 +185,47 @@ router.post("/api/ingredients", (req, res) => {
     }
   );
 });
-// ***************************************** I'm not exactly sure what to do about this conflict. I commented everything to be resolved later. 
-// <<<<<<< jwt-patrick
-// router.post("/api/recipeCreate", auth, (req, res) => {
-//   const {
-//     title,
-//     description,
-//     ingredients,
-//     instruction,
-//     tips,
-//     yeild,
-//     categories,
-//     activeTime,
-//     inActiveTime,
-//     addons,
-//     forkedFrom,
-//     images,
-//     pubDate,
-//     author,
-//   } = req.body;
 
-//   db.Recipe.create(
-//     {
-//       title: title,
-//       description: description,
-//       ingredients: ingredients,
-//       instruction: instruction,
-//       tips: tips,
-//       yeild: yeild,
-//       categories: categories,
-//       feedback: "",
-//       activeTime: activeTime,
-//       inActiveTime: inActiveTime,
-//       addons: addons,
-//       forkedFrom: forkedFrom,
-//       images: images,
-//       pubDate: pubDate,
-//       likes: 0,
-//       saves: 0,
-//       forks: 0,
-//       author: author,
-//     },
-// =======
+router.post("/api/recipeCreate", (req, res) => {
+ // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
+  db.Recipe.create(req.body,
+    function (response) {
+      // res.send(response); WHY is this SEND?
+      res.json(response)
+    }
+  );
+});
 
-// router.post("/api/recipeCreate", (req, res) => {
+
+// router.get("/api/recipeDisplay/:recipeId", (req, res) => {
 //  // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
-//   db.Recipe.create(req.body,
-// >>>>>>> master
-//     function (response) {
-//       // res.send(response); WHY is this SEND?
-//       res.json(response)
-//     }
-//   );
+//  console.log(req.params)
+//  Recipe.findById(req.params.id)
+//  .then(response => res.json(response))
+//  .catch(err => res.status(422).json(err));
 // });
 
-router.get("/api/recipe", (req, res) => {
- // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
- db.Recipe.findById(req.params.id)
- .then(queryResponse => res.json(queryResponse))
- .catch(err => res.status(422).json(err));
+router.get("/api/recipeDisplay/:algoliaObjectId", (req, res) => {
+console.log(req.params)
+Recipe.findOne({_algoliaObjectID: req.params.algoliaObjectId})
+.then(response => {
+  res.json(response)
+console.log(res.json(response))
+.catch(err => res.status(422).json(err));
+ })
 });
+
+
+//THIS WORKS BUT I CANT GET IT TO WORK WITH THE Recipe.findOne({_algoliaObjectID: req.params.algoliaObjectId}) AT THE SAMETIME
+// router.get("/api/recipeDisplay/:id", (req, res) => {
+// console.log(req.params)
+// Recipe.findById(req.params.id)
+// .then(response => {
+//   res.json(response)
+// console.log(res.json(response))
+// .catch(err => res.status(422).json(err));
+//  })
+// });
 
   
 //DO WE NEED A router.get("/api/recipeCreate")........?

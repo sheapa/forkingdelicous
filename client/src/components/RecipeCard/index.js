@@ -1,5 +1,6 @@
 // import React from 'react'
 import React, {Component} from 'react'
+import axios from 'axios';
 // import { get } from 'axios';
 import { Card, Icon, Image, Container, Menu } from 'semantic-ui-react'
 import MyImage from '../../Images/recipes/orcishLibrarian.jpg'
@@ -42,6 +43,20 @@ class RecipeCard extends Component{
   // componentDidMount() {
   //   this.getRecipe();
   // }
+
+  componentDidMount () {
+    // console.log(this.props.match && this.props.match.params.param);
+    const { match: { params } } = this.props;
+    axios.get(`/api/recipeDisplay/${params.algoliaObjectId}`)
+    .then(({ data: recipe }) => {
+        console.log("recipe", recipe);
+        this.setState({ recipe });
+    });
+    
+    // console.log("this is:" + params)
+
+  };
+
   render (){
     const { recipe } = this.state;
     return(
@@ -51,7 +66,7 @@ class RecipeCard extends Component{
         <Image src= {MyImage} wrapped ui={false}/>
         <Card.Header>
           {recipe.title}
-            </Card.Header>
+        </Card.Header>
         <Card.Meta as="div"></Card.Meta>
        <Card.Content>
          {recipe.ingredients}
