@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer, Component } from "react";
 import axios from "axios";
 
 const dataFetchReducer = (state, action) => {
@@ -37,49 +37,60 @@ const dataFetchReducer = (state, action) => {
   }
 };
 
-const useAxiosFetch = (initialUrl, initialData) => {
-  const [url] = useState(initialUrl);
+export default {
 
-  const [state, dispatch] = useReducer(dataFetchReducer, {
-    isLoading: false,
-    hasErrored: false,
-    errorMessage: "",
-    data: initialData
-  });
-
-  useEffect(() => {
-    let didCancel = false;
-
-    const fetchData = async () => {
-      dispatch({ type: "FETCH_INIT" });
-
-      try {
-        let result = await axios.get(url);
-        if (!didCancel) {
-          dispatch({ type: "FETCH_SUCCESS", payload: result.data });
-        }
-      } catch (err) {
-        if (!didCancel) {
-          dispatch({ type: "FETCH_FAILURE" });
-        }
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      didCancel = true;
-    };
-  }, [url]);
-
-  const updateDataRecord = record => {
-    dispatch({
-      type: "REPLACE_DATA",
-      replacerecord: record
+  useAxiosFetch: (initialUrl, initialData) => {
+    const [url] = useState(initialUrl);
+  
+    const [state, dispatch] = useReducer(dataFetchReducer, {
+      isLoading: false,
+      hasErrored: false,
+      errorMessage: "",
+      data: initialData
     });
-  };
+  
+    useEffect(() => {
+      let didCancel = false;
+  
+      const fetchData = async () => {
+        dispatch({ type: "FETCH_INIT" });
+  
+        try {
+          let result = await axios.get(url);
+          if (!didCancel) {
+            dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+          }
+        } catch (err) {
+          if (!didCancel) {
+            dispatch({ type: "FETCH_FAILURE" });
+          }
+        }
+      };
+  
+      fetchData();
+  
+      return () => {
+        didCancel = true;
+      };
+    }, [url]);
+  
+    const updateDataRecord = record => {
+      dispatch({
+        type: "REPLACE_DATA",
+        replacerecord: record
+      });
+    };
+  
+    return { ...state, updateDataRecord };
+  }
+}
 
-  return { ...state, updateDataRecord };
-};
+class useAxiosFetchComponent extends Component {
+  render(){
+    return(
+      <useAxiosFetch/>
+    )
+  }
+}
 
-export default useAxiosFetch;
+export default useAxiosFetchComponent;

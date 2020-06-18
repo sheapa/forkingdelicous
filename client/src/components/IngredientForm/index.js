@@ -7,53 +7,106 @@ function SubmitButton() {
 }
 
 class IngredientForm extends Component {
-  handleIngredientCreate = (event) => {
-    event.preventDefault();
-    const ingredient = event.target.value;
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      unit: 0,
+      quantity: 0,
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleIngredientCreate = this.handleIngredientCreate.bind(this);
+  }
 
-    console.log(`ingredient form submit ${ingredient.name}`);
-
-    API.saveIngredient({
-      name: ingredient.name,
-      unit: ingredient.unit,
-      quantity: ingredient.quantity,
-    }).then(() => {
-      console.log('ingredient created');
+  handleInputChange(event) {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value,
     });
-  };
+  }
+
+  handleIngredientCreate(event) {
+    event.preventDefault();
+    console.log(`this.state.name: ${this.state.name}`);
+    API.saveIngredient({
+      name: this.state.name,
+      unit: this.state.unit,
+      quantity: this.state.quantity,
+    }).then(
+      function (response) {
+        response.data.name = this.state.name;
+        this.props.addIngredient(response.data);
+      }.bind(this)
+    );
+  }
 
   render() {
     return (
-      <Form
-        action='/api/ingredients'
-        method='POST'
-        id='IngredientForm'
-        onSubmit={this.handleIngredientCreate}
-        style={{ fontSize: '1.5em' }}
-      >
-        <Form.Field
-          control={Input}
-          label='Ingredient'
-          name='ingredients.name'
-          placeholder='Ingredient'
-          width={12}
-        />
-        <Form.Field
-          control={Input}
-          label='Measure'
-          name='ingredients.unit'
-          placeholder='How to Measure?'
-          width={12}
-        />
-        <Form.Field
-          control={Input}
-          label='Amount'
-          name='ingredients.quantity'
-          placeholder='How Much?'
-          width={12}
-        />
-        <Form.Field control={SubmitButton}>Submit</Form.Field>
-      </Form>
+      // <form id="IngredientForm" onSubmit={this.handleIngredientCreate}>
+      //   <input
+      //     label="Ingredient name"
+      //     name="name"
+      //     placeholder="Ingredient"
+      //     width={12}
+      //     onChange={this.handleInputChange}
+      //     value={this.state.name}
+      //   />
+      //   <input
+      //     label="Ingredient unit"
+      //     name="unit"
+      //     placeholder="Ingredient"
+      //     width={12}
+      //     onChange={this.handleInputChange}
+      //     value={this.state.unit}
+      //   />
+      //   <input
+      //     label="Ingredient quantity"
+      //     name="quantity"
+      //     placeholder="Ingredient"
+      //     width={12}
+      //     onChange={this.handleInputChange}
+      //     value={this.state.quantity}
+      //   />
+      //   <input type="submit" placeholder="Submit" />
+      // </form>
+      <div style={{ minWidth: '700px' }}>
+        <Form
+          action='/api/ingredients'
+          method='POST'
+          id='IngredientForm'
+          onSubmit={this.handleIngredientCreate}
+        >
+          <Form.Field
+            control={Input}
+            label='Ingredient name'
+            name='name'
+            placeholder='Ingredient'
+            width={12}
+            onChange={this.handleInputChange}
+            value={this.state.name}
+          />
+          <Form.Field
+            control={Input}
+            label='Ingredient unit'
+            name='unit'
+            placeholder='Ingredient'
+            width={12}
+            onChange={this.handleInputChange}
+            value={this.state.unit}
+          />
+          <Form.Field
+            control={Input}
+            label='Ingredient quantity'
+            name='quantity'
+            placeholder='Ingredient'
+            width={12}
+            onChange={this.handleInputChange}
+            value={this.state.quantity}
+          />
+          <Form.Field control={SubmitButton}>Submit</Form.Field>
+        </Form>
+      </div>
     );
   }
 }

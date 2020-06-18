@@ -5,7 +5,6 @@ const mongoolia = require('mongoolia').default;
 const Schema = mongoose.Schema;
 
 const RecipeSchema = new Schema({
-  
   title: {type: Schema.Types.String, algoliaIndex: true},
   
   description: {type: Schema.Types.String, algoliaIndex: true},
@@ -30,18 +29,20 @@ const RecipeSchema = new Schema({
   
   forkedFrom: { type: Schema.Types.ObjectId, ref: "User", algoliaIndex: true },
   
-  // images: [Schema.Types.String],
+  image: {
+    name: Schema.Types.String,
+  },
   
   pubDate: {
     type: Schema.Types.Date,
     default: Date.now,
   },
   
-  likes: {type: Schema.Types.Number, algoliaIndex: true},
+  likes: {type: Schema.Types.Number, default:0, algoliaIndex: true},
   
-  saves: {type: Schema.Types.Number, algoliaIndex: true},
+  saves: {type: Schema.Types.Number, default:0, algoliaIndex: true},
   
-  forks: {type: Schema.Types.Number, algoliaIndex: true},
+  forks: {type: Schema.Types.Number, default:0, algoliaIndex: true},
   
   author: { type: Schema.Types.ObjectId, ref: "User", algoliaIndex: true },
 });

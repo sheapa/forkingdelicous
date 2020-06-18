@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import MyImage from '../../src/assets/images/orcishLibrarian.jpg';
-import Pancakes from '../../src/assets/images/pancakes.jpg';
-import Kitchen from '../../src/assets/images/inKitchen.jpg';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -18,7 +16,7 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 import './index.css';
-// import SearchBar from '../components/Search'
+import Search from '../components/Search';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -135,36 +133,27 @@ class DesktopContainer extends Component {
               // size='large'
             >
               <Container>
+                <Menu.Item as='a' active>
+                  Home
+                </Menu.Item>
+                <Menu.Item as='a'>Chef's Corner</Menu.Item>
+                <Menu.Item as='a'>Create a Recipe</Menu.Item>
+                <Search />
                 <Menu.Item position='right'>
-                  <Button
-                    as='a'
-                    inverted={!fixed}
-                    style={{ marginLeft: '0.5em' }}
-                  >
-                    Chef's Page
-                  </Button>
-                  <Button
-                    as='a'
-                    inverted={!fixed}
-                    style={{ marginLeft: '0.5em' }}
-                  >
-                    Create a Recipe
-                  </Button>
-                  <Button
-                    as='a'
-                    inverted={!fixed}
-                    style={{
-                      marginLeft: '0.5em',
-                      background: '#36393e',
-                      color: '#f6f7f5',
-                    }}
-                  >
-                    Log-in/Log-out
-                  </Button>
-                  <Image
-                    src='https://live.staticflickr.com/65535/50014851021_3d53cbb8fa_n.jpg'
-                    avatar
-                  />
+                  <Link to={'/login'}>
+                    <Button as='a' inverted={!fixed}>
+                      Log in
+                    </Button>
+                  </Link>
+                  <Link to={'/register'}>
+                    <Button
+                      as='a'
+                      inverted={!fixed}
+                      style={{ marginLeft: '0.5em' }}
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
                 </Menu.Item>
               </Container>
             </Menu>
@@ -328,6 +317,15 @@ const Landing = () => (
 
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Container text>
+        <Divider
+          as='h4'
+          className='header'
+          horizontal
+          style={{ margin: '3em 0em', textTransform: 'uppercase' }}
+        >
+          {/* <a href='#'>Extra Extra</a> */}
+        </Divider>
+
         <Header as='h3' style={{ fontSize: '2em' }}>
           A Few of Our Favorite Chefs
         </Header>

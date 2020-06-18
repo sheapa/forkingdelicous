@@ -1,12 +1,15 @@
 import axios from "axios";
 
 export default {
-findByRecipeId: function(id){
-    return axios.get("/api/recipe" + id)
+// findByRecipeId: function(_id){
+//     return axios.get("/api/recipe" + _id)
+// },
+findByRecipeId: function(_algoliaObjectId){
+    return axios.get("/api/recipeDisplay/" + _algoliaObjectId)
 },
 
 saveRecipe: function(recipeData){
-    return axios.post("/api/recipe", recipeData)
+    return axios.post("/api/recipeCreate", recipeData)
 },
 
 saveIngredient: function(ingredientData){

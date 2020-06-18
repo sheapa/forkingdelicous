@@ -1,6 +1,6 @@
 {
-  "short_name": "Forking Delicious",
-  "name": "Forking Delicious Recipes",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#7d7d74",
-  "background_color": "#36393e"
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }

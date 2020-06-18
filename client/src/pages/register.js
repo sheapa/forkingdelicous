@@ -1,108 +1,131 @@
-// import React, { useState, useEffect, useContext } from 'react';
-// import { Button, Form, Grid, Image, Header, Segment } from 'semantic-ui-react';
-// import { toast } from 'react-toastify';
-// // import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import './index.css';
-// // import { Link } from 'react-router-dom';
-// import { ConfigContext } from '../App';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+    Button,
+    Form,
+    Grid,
+    Header,
+    Image,
+    Message,
+    Segment,
+  } from 'semantic-ui-react';
+  import './index.css';
+  import AvatarForm from "../components/AvatarForm";
+  import axios from "axios";
+  import './index.css';
+  
+const Register = (props) => {
+    const [userName, setuserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
+  
+  function onSubmit(e) {
+    e.preventDefault();
+    const userData = {
+      userName: userName,
+      email: email,
+      password: password,
+      password2: password2
+    }
+    // this.props.loginUser(user);
+    axios
+    .post("/api/register", userData)
+    .then((res) => {
+      // Save to local storage
+      // const token = res.data.token;
+      // localStorage.setItem("jwtToken", token);
+      // setAuthToken(token);
+      // props.setAuth("authorized");
+      console.log(res);
+      props.history.push("/login");
+    })
+    .catch((err) =>
+      console.log(err)
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response.data,
+      // })
+    );
+  }
 
-// const Register = ({ signupCallback }) => {
-//   useEffect(() => {
-//     //console.log(`SignMeUp:useEffect called`);
-//   });
+  return  (
 
-//   const [username, setusername] = useState();
-//   // const [emailValid, setEmailValid] = useState(false);
-//   const [sendProcessing, setSendProcessing] = useState(false);
+    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 600 }}>
+        <Image
+          src='https://live.staticflickr.com/65535/49986191503_43be3abc1e.jpg'
+          size='large'
+        />
+        <Header as='h2' textAlign='center'>
+          Login for Forking Delicious Recipes
+        </Header>
+        <Segment stacked>
+          <Form onSubmit={onSubmit.bind(this)} size='large'>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='create a user name.'
+              name='userName'
+              onChange={(e) => {
+                setuserName(e.target.value);
+              }}
+              value={userName}
+              autoComplete='off'
+            />
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='your email'
+              name='email'
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
+              autoComplete='off'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+                value={password}
+              type='password'
+              name='password'
+              placeholder='password'
+              autoComplete='off'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              onChange={(e) => {
+                setPassword2(e.target.value);
+              }}
+                value={password2}
+              type='password'
+              name='password2'
+              placeholder='verify password'
+              autoComplete='off'
+            />
 
-//   const context = useContext(ConfigContext);
+            <Button color='#36393e' value='submit' fluid size='large'>
+              sign me up!
+            </Button>
+          </Form>
 
-//   // function validateEmail(email) {
-//   //   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//   //   return re.test(email);
-//   // }
+          <AvatarForm />
 
-//   const notify = () => {
-//     toast.info(`You will be notified of upcoming events ${username}`);
-//   };
-
-//   // function sendusernameToBackend() {
-//   //   setSendProcessing(true);
-//   //   new Promise(function (resolve) {
-//   //     setTimeout(function () {
-//   //       setSendProcessing(false);
-//   //       setusername('');
-//   //       resolve();
-//   //     }, 1000);
-//   //   }).then(() => {
-//   //     notify();
-//   //     signupCallback(username);
-//   //     setusername('');
-//   //   });
-//   // }
-
-//   // const buttonText = sendProcessing ? 'processing...' : 'Get Updates';
-
-//   //console.log("src/SignMeUp called");
-
-//   if (context.loggedInUserusername) {
-//     return (
-//       <div className='container'>
-//         <div className='content'>
-//           <span>Logged in User username: {context.loggedInUserusername}</span>
-//           &nbsp;&nbsp;
-//           <a href='/logout'>Logout</a>
-//         </div>
-//       </div>
-//     );
-//   }
-
-//   return context.showSignMeUp === false ? null : (
-//     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-//       <Grid.Column style={{ maxWidth: 600 }}>
-//         <Image
-//           src='https://live.staticflickr.com/65535/49986191503_43be3abc1e.jpg'
-//           size='large'
-//         />
-//         <Header as='h2' textAlign='center'>
-//           Sign Up for Forking Delicious Recipes
-//         </Header>
-//         <Segment>
-//           <Form action='/register' method='POST' size='large'>
-//             <Form.Input
-//               fluid
-//               icon='user'
-//               iconPosition='left'
-//               placeholder='username'
-//               name='username'
-//               onChange={(e) => {
-//                 setusername(e.target.value);
-//               }}
-//               value={username}
-//               autoComplete='off'
-//             />
-//             <Form.Input
-//               fluid
-//               icon='lock'
-//               iconPosition='left'
-//               onChange={(e) => {
-//                 console.log('space for password');
-//                 // setPassword(e.target.value);
-//               }}
-//               //   value={password}
-//               type='password'
-//               name='password'
-//               placeholder='Password'
-//               autoComplete='off'
-//             />
-//             <Button color='#726F79' value='submit' fluid size='large'>
-//               Sign Me Up
-//             </Button>
-//           </Form>
-//         </Segment>
-//       </Grid.Column>
-//     </Grid>
-//   );
-// };
-// export default Register;
+          <Message>
+            already have an account?  <Link to={"/login"}>login</Link>
+          </Message>
+        </Segment>
+      </Grid.Column>
+    </Grid>
+  );
+};
+export default Register;

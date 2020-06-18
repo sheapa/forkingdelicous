@@ -6,3 +6,6 @@ node_modules
 
 #dont need this because it gets generated each time
 build
+
+#extra
+config
