@@ -11,7 +11,8 @@ class RecipeCard extends Component {
     super(props);
 this.props = props
     this.state = {
-      recipe: [],
+      // recipe: [],
+      recipe: {},
     };
 
     // this.setPage = this.setPage.bind(this);
@@ -64,7 +65,8 @@ this.props = props
         <Container>
           <Card fluid>
             <Image src={MyImage} wrapped ui={false} />
-            <Card.Header>{recipe.title}</Card.Header>
+            <Card.Header title={recipe.title}/>
+            {/* title={recipe.title}</Card.Header> */}
             <Card.Meta as='div'></Card.Meta>
             <Card.Content>{recipe.ingredients}</Card.Content>
             <Card.Content>{recipe.instructions}</Card.Content>

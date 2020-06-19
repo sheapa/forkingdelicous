@@ -189,7 +189,12 @@ router.post("/api/ingredients", (req, res) => {
 router.post("/api/recipeCreate", (req, res) => {
  // if we want to add a value we can add the code "req.body.<property name we want> = <value that we want for that property>"
   db.Recipe.create(req.body,
-    function (response) {
+    function (err, response) {
+      console.log(`response: ${response}`)
+         if (err){
+           console.log(err)
+           return
+         }
       // res.send(response); WHY is this SEND?
       res.json(response)
     }
